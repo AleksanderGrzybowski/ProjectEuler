@@ -2,7 +2,7 @@ import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
 @Done
-public class Problem05 {
+public class Problem05  implements Problem<Integer>{
 
 	static final int FIRST_DIVISOR = 1;
 	static final int LAST_DIVISOR = 20;
@@ -17,10 +17,16 @@ public class Problem05 {
 		return stream;
 	}
 
-	public static void main(String[] args) {
+	@Override
+	public Integer getCalculatedSolution() {
 		IntStream naturalNumbers = IntStream.iterate(1, i -> i + 1);
 		int result = getFilteredStream(naturalNumbers).findFirst().getAsInt();
 
-		System.out.println(result);
+		return result;
+	}
+
+	@Override
+	public Integer getExpectedSolution() {
+		return 232792560;
 	}
 }

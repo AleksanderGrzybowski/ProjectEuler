@@ -2,8 +2,10 @@ import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
 @Done
-public class Problem01 {
-	public static void main(String[] args) {
+public class Problem01 implements Problem<Integer> {
+
+	@Override
+	public Integer getCalculatedSolution() {
 		IntPredicate isDivisibleBy3 = (i) -> (i % 3 == 0);
 		IntPredicate isDivisibleBy5 = (i) -> (i % 5 == 0);
 		IntPredicate criteria = isDivisibleBy3.or(isDivisibleBy5);
@@ -15,6 +17,11 @@ public class Problem01 {
 				.filter(criteria)
 				.sum();
 
-		System.out.println(sum);
+		return sum;
+	}
+
+	@Override
+	public Integer getExpectedSolution() {
+		return 233168;
 	}
 }

@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.stream.LongStream;
 
 @Done
-public class Problem08 {
+public class Problem08 implements Problem<Long> {
 
 	// @formatter:off
 	static String numberString =
@@ -34,13 +34,19 @@ public class Problem08 {
 				.reduce(1L, (a, b) -> a * b);
 	}
 
-	public static void main(String[] args) {
+	@Override
+	public Long getCalculatedSolution() {
 		final int LENGTH_OF_SUBSTRING = 13;
 
 		long result = LongStream.rangeClosed(0, numberString.length() - LENGTH_OF_SUBSTRING).boxed()
 				.map(i -> numberString.substring(i.intValue(), i.intValue() + LENGTH_OF_SUBSTRING))
 				.map(Problem08::calculateProductOfDigits).mapToLong(i -> i).max().getAsLong();
 
-		System.out.println(result);
+		return result;
+	}
+
+	@Override
+	public Long getExpectedSolution() {
+		return 23514624000L;
 	}
 }
