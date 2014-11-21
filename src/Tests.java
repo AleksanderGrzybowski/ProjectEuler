@@ -1,28 +1,40 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tests {
 
-
-
-	public static void runAllTests() {
-		System.out.println("Starting all tests for problems");
-
-		for (int i = 1; i <= 99; ++i) {
-			String className = "Problem" + String.format("%02d", i);
-			testClass(className);
-		}
-	}
-
-	public static void runFastTests() {
-		System.out.println("Starting FAST tests for problems");
+	public static List<String> getAllProblemClasses() {
+		List<String> list = new ArrayList<>();
 
 		for (int i = 1; i <= 99; ++i) {
 			String className = "Problem" + String.format("%02d", i);
 			try {
-				if (Class.forName(className).isAnnotationPresent(TakesTime.class))
+				Class.forName(className).newInstance();
+				list.add(className);
+			} catch (Exception e) {
+				// empty
+			}
+		}
+		return list;
+	}
+
+	public static void runAllTests() {
+		System.out.println("Starting ALL tests for problems");
+		getAllProblemClasses().forEach(Tests::testClass);
+	}
+
+
+	public static void runFastTests() {
+		System.out.println("Starting FAST tests for problems");
+
+		for (String s : getAllProblemClasses()) {
+			try {
+				if (Class.forName(s).isAnnotationPresent(TakesTime.class))
 					continue;
 			} catch (Exception e) {
-				continue;
+				throw new AssertionError();
 			}
-			testClass(className);
+			testClass(s);
 		}
 	}
 
@@ -30,10 +42,11 @@ public class Tests {
 
 		Problem problem;
 		try {
-			problem = (Problem)Class.forName(problemClassName).newInstance();
+			problem = (Problem) Class.forName(problemClassName).newInstance();
 		} catch (Exception e) {
-			return;
+			throw new AssertionError();
 		}
+
 		System.out.print("" + problem.getClass());
 		Object expected = problem.getExpectedSolution();
 		Object actual = problem.getCalculatedSolution();
@@ -43,6 +56,4 @@ public class Tests {
 			System.out.println("  PASS");
 		}
 	}
-
-
 }
