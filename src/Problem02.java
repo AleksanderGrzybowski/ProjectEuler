@@ -1,36 +1,32 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.IntPredicate;
-import java.util.function.IntSupplier;
-import java.util.stream.IntStream;
 
-/**
- * Created by kelog on 21.11.14.
- */
-
-
-
-
+@Done
 public class Problem02 {
-	static class FibbonacciSupplier implements IntSupplier {
 
+
+
+	static List<Integer> getFibbonacciNumbers(int maximumValue) {
+		List<Integer> resultList = new ArrayList<>();
 		int previous = 0;
 		int current = 1;
 
-		@Override
-		public int getAsInt() {
-			int result = previous + current;
+		while (current < maximumValue) {
+			resultList.add(current);
+			int tmp = previous + current;
 			previous = current;
-			current = result;
-			return result;
+			current = tmp;
 		}
+
+		return resultList;
 	}
 
 	public static void main(String[] args) {
-
-		IntPredicate maximumValueConstraint = i -> (i < 4_000_000);
+		final int MAXIMUM_VALUE = 4_000_000;
 		IntPredicate evenValueConstraint = i -> (i % 2 == 0);
 
-		int sum = IntStream.generate(new FibbonacciSupplier())
-				.filter(maximumValueConstraint)
+		int sum = getFibbonacciNumbers(MAXIMUM_VALUE).stream().mapToInt(i -> i)
 				.filter(evenValueConstraint)
 				.limit(1000)
 				.sum();

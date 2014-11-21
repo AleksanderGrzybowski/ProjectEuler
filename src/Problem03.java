@@ -2,11 +2,8 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by kelog on 21.11.14.
- */
+@Done
 public class Problem03 {
-
 	public static List<BigInteger> factorize(BigInteger number) {
 		List<BigInteger> factors = new ArrayList<>();
 		
@@ -27,7 +24,7 @@ public class Problem03 {
 		BigInteger number = new BigInteger("600851475143");
 		List<BigInteger> factors = factorize(number);
 
-		BigInteger largestPrimeFactor = factors.stream().sorted().reduce((a,b) -> (a.compareTo(b) >= 0 ? a : b)).get();
+		BigInteger largestPrimeFactor = factors.stream().max((o1, o2) -> o1.compareTo(o2)).get();
 
 		System.out.println(largestPrimeFactor);
 	}
