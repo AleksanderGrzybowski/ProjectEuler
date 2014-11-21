@@ -5,8 +5,6 @@ import java.util.function.IntPredicate;
 @Done
 public class Problem02 {
 
-
-
 	static List<Integer> getFibbonacciNumbers(int maximumValue) {
 		List<Integer> resultList = new ArrayList<>();
 		int previous = 0;
