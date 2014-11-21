@@ -2,7 +2,8 @@ import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
 @Done
-public class Problem05  implements Problem<Integer>{
+@TakesTime
+public class Problem05 implements Problem<Integer> {
 
 	static final int FIRST_DIVISOR = 1;
 	static final int LAST_DIVISOR = 20;

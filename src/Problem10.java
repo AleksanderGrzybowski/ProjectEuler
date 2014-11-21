@@ -1,6 +1,7 @@
 import java.util.stream.LongStream;
 
 @Done
+@TakesTime
 public class Problem10 implements Problem<Long> {
 
 	public static boolean isPrime(long number) {

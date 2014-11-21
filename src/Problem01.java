@@ -22,4 +22,8 @@ public class Problem01 implements Problem<Integer> {
 	public Integer getExpectedSolution() {
 		return 233168;
 	}
+
+	public static void main(String[] args) {
+		Tests.testClass(Thread.currentThread().getStackTrace()[1].getClassName());
+	}
 }

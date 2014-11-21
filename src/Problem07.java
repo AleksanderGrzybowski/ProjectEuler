@@ -1,6 +1,7 @@
 import java.util.stream.IntStream;
 
 @Done
+@TakesTime
 public class Problem07 implements Problem<Integer> {
 
 	public static boolean isPrime(int number) {
