@@ -12,9 +12,7 @@ public class Problem07 implements Problem<Integer> {
 		IntStream naturalNumbers = IntStream.iterate(1, i -> i + 1);
 		int index = 10_001;
 
-		int result = naturalNumbers.filter(Problem07::isPrime).skip(index - 1).findFirst().getAsInt();
-
-		return result;
+		return naturalNumbers.filter(Problem07::isPrime).skip(index - 1).findFirst().getAsInt();
 	}
 
 	@Override

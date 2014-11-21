@@ -9,11 +9,9 @@ public class Problem10 implements Problem<Long> {
 
 	@Override
 	public Long getCalculatedSolution() {
-		long sum = LongStream.range(1, 2_000_000)
+		return LongStream.range(1, 2_000_000)
 				.filter(Problem10::isPrime)
 				.sum();
-
-		return sum;
 	}
 
 	@Override

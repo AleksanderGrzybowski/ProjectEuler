@@ -38,11 +38,9 @@ public class Problem08 implements Problem<Long> {
 	public Long getCalculatedSolution() {
 		final int LENGTH_OF_SUBSTRING = 13;
 
-		long result = LongStream.rangeClosed(0, numberString.length() - LENGTH_OF_SUBSTRING).boxed()
+		return LongStream.rangeClosed(0, numberString.length() - LENGTH_OF_SUBSTRING).boxed()
 				.map(i -> numberString.substring(i.intValue(), i.intValue() + LENGTH_OF_SUBSTRING))
 				.map(Problem08::calculateProductOfDigits).mapToLong(i -> i).max().getAsLong();
-
-		return result;
 	}
 
 	@Override

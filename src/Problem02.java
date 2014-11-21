@@ -26,12 +26,10 @@ public class Problem02 implements Problem<Integer> {
 		final int MAXIMUM_VALUE = 4_000_000;
 		IntPredicate evenValueConstraint = i -> (i % 2 == 0);
 
-		int sum = getFibbonacciNumbers(MAXIMUM_VALUE).stream().mapToInt(i -> i)
+		return getFibbonacciNumbers(MAXIMUM_VALUE).stream().mapToInt(i -> i)
 				.filter(evenValueConstraint)
 				.limit(1000)
 				.sum();
-
-		return sum;
 	}
 
 	@Override

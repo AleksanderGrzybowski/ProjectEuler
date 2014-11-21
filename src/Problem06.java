@@ -13,9 +13,7 @@ public class Problem06 implements Problem<Integer> {
 		int sum = getRange().sum();
 		int squareOfSum = sum * sum;
 
-		int result = squareOfSum - sumOfSquares;
-
-		return result;
+		return squareOfSum - sumOfSquares;
 	}
 
 	@Override

@@ -6,13 +6,11 @@ public class Problem09 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		outer:
 		for (int a = 1; a <= 999; ++a) {
 			for (int b = 1; b <= 999; ++b) {
 				for (int c = 1; c <= 999; ++c) {
 					if (isConditionMet(a, b, c)) {
 						return a * b * c;
-
 					}
 				}
 			}

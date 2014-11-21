@@ -20,9 +20,8 @@ public class Problem05  implements Problem<Integer>{
 	@Override
 	public Integer getCalculatedSolution() {
 		IntStream naturalNumbers = IntStream.iterate(1, i -> i + 1);
-		int result = getFilteredStream(naturalNumbers).findFirst().getAsInt();
 
-		return result;
+		return getFilteredStream(naturalNumbers).findFirst().getAsInt();
 	}
 
 	@Override

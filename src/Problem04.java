@@ -6,7 +6,6 @@ public class Problem04 implements Problem<Integer> {
 		return new StringBuilder(numberString).reverse().toString().equals(numberString);
 	}
 
-
 	@Override
 	public Integer getCalculatedSolution() {
 		int currentBiggestPalindrome = 0;

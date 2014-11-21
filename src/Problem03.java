@@ -20,15 +20,12 @@ public class Problem03 implements Problem<BigInteger> {
 		return factors;
 	}
 
-
 	@Override
 	public BigInteger getCalculatedSolution() {
 		BigInteger number = new BigInteger("600851475143");
 		List<BigInteger> factors = factorize(number);
 
-		BigInteger largestPrimeFactor = factors.stream().max((o1, o2) -> o1.compareTo(o2)).get();
-
-		return largestPrimeFactor;
+		return factors.stream().max((o1, o2) -> o1.compareTo(o2)).get();
 	}
 
 	@Override

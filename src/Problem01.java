@@ -13,11 +13,9 @@ public class Problem01 implements Problem<Integer> {
 		int startNumberInclusive = 0;
 		int endNumberInclusive = 999;
 
-		int sum = IntStream.rangeClosed(startNumberInclusive, endNumberInclusive)
+		return IntStream.rangeClosed(startNumberInclusive, endNumberInclusive)
 				.filter(criteria)
 				.sum();
-
-		return sum;
 	}
 
 	@Override
