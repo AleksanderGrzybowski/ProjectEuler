@@ -1,7 +1,7 @@
 import java.util.function.IntSupplier;
 import java.util.stream.IntStream;
 
-
+@Done
 public class Problem12 implements Problem<Integer> {
 
 	static class TriangleNumberSupplier implements IntSupplier {

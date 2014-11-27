@@ -20,7 +20,6 @@ public class Problem02 implements Problem<Integer> {
 		return resultList;
 	}
 
-
 	@Override
 	public Integer getCalculatedSolution() {
 		final int MAXIMUM_VALUE = 4_000_000;
