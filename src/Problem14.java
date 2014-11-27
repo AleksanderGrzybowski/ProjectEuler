@@ -2,7 +2,7 @@ import java.util.Comparator;
 import java.util.stream.IntStream;
 
 @Done
-public class Problem13 implements Problem<Integer> {
+public class Problem14 implements Problem<Integer> {
 
 	static int getCollatzSequenceLength(long number) {
 		int length = 0;
