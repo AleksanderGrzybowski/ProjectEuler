@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tests {
+public class TestUtils {
 
 	public static List<String> getAllProblemClasses() {
 		List<String> list = new ArrayList<>();
@@ -20,7 +20,7 @@ public class Tests {
 
 	public static void runAllTests() {
 		System.out.println("Starting ALL tests for problems");
-		getAllProblemClasses().forEach(Tests::testClass);
+		getAllProblemClasses().forEach(TestUtils::testClass);
 	}
 
 

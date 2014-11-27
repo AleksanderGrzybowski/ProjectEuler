@@ -1,18 +1,17 @@
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 @Done
-public class Problem03 implements Problem<BigInteger> {
-	public static List<BigInteger> factorize(BigInteger number) {
-		List<BigInteger> factors = new ArrayList<>();
+public class Problem03 implements Problem<Long> {
+	public static List<Long> factorize(long number) {
+		List<Long> factors = new ArrayList<>();
 		
 		outer:
-		while (!number.equals(BigInteger.ONE)) {
-			for (BigInteger pf = BigInteger.valueOf(2); pf.compareTo(number) <= 0; pf = pf.add(BigInteger.ONE)) {
-				if (number.mod(pf).equals(BigInteger.ZERO)) {
+		while (number != 1) {
+			for (long pf = 2; pf <= number; pf++) {
+				if (number % pf == 0) {
 					factors.add(pf);
-					number = number.divide(pf);
+					number /= pf;
 					continue outer;
 				}
 			}
@@ -21,15 +20,15 @@ public class Problem03 implements Problem<BigInteger> {
 	}
 
 	@Override
-	public BigInteger getCalculatedSolution() {
-		BigInteger number = new BigInteger("600851475143");
-		List<BigInteger> factors = factorize(number);
+	public Long getCalculatedSolution() {
+		long number = 600851475143L;
+		List<Long> factors = factorize(number);
 
 		return factors.stream().max((o1, o2) -> o1.compareTo(o2)).get();
 	}
 
 	@Override
-	public BigInteger getExpectedSolution() {
-		return BigInteger.valueOf(6857);
+	public Long getExpectedSolution() {
+		return 6857L;
 	}
 }

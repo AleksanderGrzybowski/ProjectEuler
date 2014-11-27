@@ -28,7 +28,6 @@ public class Problem02 implements Problem<Integer> {
 
 		return getFibbonacciNumbers(MAXIMUM_VALUE).stream().mapToInt(i -> i)
 				.filter(evenValueConstraint)
-				.limit(1000)
 				.sum();
 	}
 
