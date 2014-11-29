@@ -1,5 +1,5 @@
 @Done
-public class Problem17 implements Problem<Integer> {
+public class Problem18 implements Problem<Integer> {
 
 	static final int[][] triangle = new int[][]{
 			new int[]{75},
