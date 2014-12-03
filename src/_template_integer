@@ -1,0 +1,12 @@
+public class Problem21 implements Problem<Integer> {
+
+	@Override
+	public Integer getCalculatedSolution() {
+		return 1337;
+	}
+
+	@Override
+	public Integer getExpectedSolution() {
+		return 1337;
+	}
+}
