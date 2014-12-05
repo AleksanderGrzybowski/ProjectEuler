@@ -9,4 +9,8 @@ public class Problem21 implements Problem<Integer> {
 	public Integer getExpectedSolution() {
 		return 1337;
 	}
+
+	public static void main(String[] args) {
+
+    }
 }
