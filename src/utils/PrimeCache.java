@@ -1,11 +1,10 @@
 package utils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.TreeSet;
 
 public class PrimeCache {
 
-	private List<Integer> primes = new ArrayList<Integer>(); // consider internally sorted list/set
+	private TreeSet<Integer> primes = new TreeSet<Integer>(); // consider internally sorted list/set
 
 	public PrimeCache(int maximumInclusive) {
 		int tabsize = maximumInclusive-2+1;
@@ -32,9 +31,9 @@ public class PrimeCache {
 		return primes.contains(n);
 	}
 
-	List<Integer> toList() {
-		return new ArrayList<>(primes);
-	}
+//	List<Integer> toList() {
+//		return new ArrayList<>(primes);
+//	}
 
 
 	public static void main(String[] args) {
