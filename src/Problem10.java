@@ -1,17 +1,17 @@
-import java.util.stream.LongStream;
+import utils.PrimeCache;
+
+import java.util.stream.IntStream;
 
 @Done
-@TakesTime
 public class Problem10 implements Problem<Long> {
 
-	public static boolean isPrime(long number) {
-		return (number != 1) && LongStream.rangeClosed(2, (long)(Math.sqrt(number))).parallel().noneMatch(i -> number % i == 0);
-	}
+	PrimeCache primeCache = new PrimeCache(2_000_000);
 
 	@Override
 	public Long getCalculatedSolution() {
-		return LongStream.range(1, 2_000_000)
-				.filter(Problem10::isPrime)
+		return IntStream.range(1, 2_000_000)
+				.filter(i -> primeCache.isPrime(i))
+				.mapToLong(i -> i)
 				.sum();
 	}
 
