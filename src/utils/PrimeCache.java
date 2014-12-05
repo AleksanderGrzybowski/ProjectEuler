@@ -38,8 +38,10 @@ public class PrimeCache {
 
 
 	public static void main(String[] args) {
-		PrimeCache p = new PrimeCache(100);
-		System.out.println(p.primes);
-		System.out.println();
+
+		System.out.println("Start");
+		PrimeCache p = new PrimeCache(10_000_000);
+//		System.out.println(p.toList());
+		System.out.println("Juz");
 	}
 }

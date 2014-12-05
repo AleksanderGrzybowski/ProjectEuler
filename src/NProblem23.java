@@ -3,7 +3,7 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 @Done
-public class Problem23 implements Problem<Integer> {
+public class NProblem23 implements Problem<Integer> {
 
 
 	static Map<Integer, Integer> sumOfProperDivisorsMap = new HashMap<>();
