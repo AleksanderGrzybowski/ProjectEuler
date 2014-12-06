@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 @Done
 public class Problem14 implements Problem<Integer> {
 
-	static int getCollatzSequenceLength(long number) {
+	int getCollatzSequenceLength(long number) {
 		int length = 0;
 
 		while (number != 1) {

@@ -13,7 +13,7 @@ public class Problem10 implements Problem<Long> {
 	@Override
 	public Long getCalculatedSolution() {
 		return IntStream.range(1, 2_000_000)
-				.filter(i -> primeCache.isPrime(i))
+				.filter(primeCache::isPrime)
 				.mapToLong(i -> i)
 				.sum();
 	}

@@ -12,11 +12,11 @@ public class Problem05 implements Problem<Integer> {
 	static final int FIRST_DIVISOR = 1;
 	static final int LAST_DIVISOR = 20;
 
-	public static IntPredicate getModPredicate(int number) {
+	public IntPredicate getModPredicate(int number) {
 		return x -> (x % number == 0);
 	}
 
-	public static IntStream getFilteredStream(IntStream stream) {
+	public IntStream getFilteredStream(IntStream stream) {
 		for (int i = FIRST_DIVISOR; i <= LAST_DIVISOR; ++i)
 			stream = stream.filter(getModPredicate(i));
 		return stream;

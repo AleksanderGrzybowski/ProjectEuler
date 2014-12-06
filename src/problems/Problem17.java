@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 @Done
 public class Problem17 implements Problem<Integer> {
 
-	static List<String> wordsList = Arrays.asList("one",
+	List<String> wordsList = Arrays.asList("one",
 			"two",
 			"three",
 			"four",
@@ -1013,11 +1013,11 @@ public class Problem17 implements Problem<Integer> {
 	@Override
 	public Integer getCalculatedSolution() {
 		return wordsList.stream()
-				.mapToInt(Problem17::countLetters)
+				.mapToInt(this::countLetters)
 				.sum();
 	}
 
-	public static int countLetters(String word) {
+	public int countLetters(String word) {
 		Predicate<String> predicate = t -> (!t.equals(" ") && !t.equals("-"));
 
 		return (int) Arrays.stream(word.split(""))

@@ -5,7 +5,7 @@ import annotations.Done;
 @Done
 public class Problem04 implements Problem<Integer> {
 
-	public static boolean isPalindrome(int number) {
+	public boolean isPalindrome(int number) {
 		String numberString = Integer.toString(number);
 		return new StringBuilder(numberString).reverse().toString().equals(numberString);
 	}

@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 @Done
 public class Problem06 implements Problem<Integer> {
 
-	public static IntStream getRange() {
+	public IntStream getRange() {
 		return IntStream.rangeClosed(1, 100);
 	}
 

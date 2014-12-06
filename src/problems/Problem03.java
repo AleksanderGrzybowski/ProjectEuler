@@ -7,7 +7,7 @@ import java.util.List;
 
 @Done
 public class Problem03 implements Problem<Long> {
-	public static List<Long> factorize(long number) {
+	public List<Long> factorize(long number) {
 		List<Long> factors = new ArrayList<>();
 		
 		outer:

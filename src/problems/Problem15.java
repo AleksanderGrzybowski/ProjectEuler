@@ -6,7 +6,7 @@ import annotations.Done;
 public class Problem15 implements Problem<Long> {
 
 	static final int SIZE = 20;
-	static long[][] tab = new long[SIZE + 1][SIZE + 1];
+	long[][] tab = new long[SIZE + 1][SIZE + 1];
 
 	@Override
 	public Long getCalculatedSolution() {

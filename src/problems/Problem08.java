@@ -9,7 +9,7 @@ import java.util.stream.LongStream;
 public class Problem08 implements Problem<Long> {
 
 	// @formatter:off
-	static String numberString =
+	String numberString =
 					"73167176531330624919225119674426574742355349194934" +
 					"96983520312774506326239578318016984801869478851843" +
 					"85861560789112949495459501737958331952853208805511" +
@@ -32,7 +32,7 @@ public class Problem08 implements Problem<Long> {
 					"71636269561882670428252483600823257530420752963450";
 	// @formatter:on
 
-	public static long calculateProductOfDigits(String input) {
+	public long calculateProductOfDigits(String input) {
 		return Arrays.stream(input.split(""))
 				.map(Long::valueOf)
 				.reduce(1L, (a, b) -> a * b);
@@ -44,7 +44,7 @@ public class Problem08 implements Problem<Long> {
 
 		return LongStream.rangeClosed(0, numberString.length() - LENGTH_OF_SUBSTRING).boxed()
 				.map(i -> numberString.substring(i.intValue(), i.intValue() + LENGTH_OF_SUBSTRING))
-				.map(Problem08::calculateProductOfDigits).mapToLong(i -> i).max().getAsLong();
+				.map(this::calculateProductOfDigits).mapToLong(i -> i).max().getAsLong();
 	}
 
 	@Override

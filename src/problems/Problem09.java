@@ -4,7 +4,7 @@ import annotations.Done;
 
 @Done
 public class Problem09 implements Problem<Integer> {
-	public static boolean isConditionMet(int a, int b, int c) {
+	public boolean isConditionMet(int a, int b, int c) {
 		return (a + b + c == 1000) && (a * a + b * b == c * c);
 	}
 

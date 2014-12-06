@@ -9,7 +9,7 @@ import java.util.function.IntPredicate;
 @Done
 public class Problem02 implements Problem<Integer> {
 
-	static List<Integer> getFibbonacciNumbers(int maximumValue) {
+	List<Integer> getFibbonacciNumbers(int maximumValue) {
 		List<Integer> resultList = new ArrayList<>();
 		int previous = 0;
 		int current = 1;

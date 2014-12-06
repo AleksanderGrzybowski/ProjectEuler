@@ -26,7 +26,7 @@ public class Problem18 implements Problem<Integer> {
 	static final int SIZE = triangle.length;
 	static int curmax = 0;
 
-	static void rec(int a, int b, int prevSum) {
+	void rec(int a, int b, int prevSum) {
 		prevSum += triangle[a][b];
 		if (a == (SIZE - 1)) {
 			if (prevSum > curmax) {
