@@ -1,40 +1,28 @@
 package problems;
 
-import java.util.*;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
+import annotations.Done;
+import utils.SumOfProperDivisorsCache;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.IntStream;
+
+@Done
 public class Problem23 implements Problem<Integer> {
 
-
-	Map<Integer, Integer> sumOfProperDivisorsMap = new HashMap<>();
-
-	{
-		for (int i = 1; i <= 65000; ++i) // TODO change magic number to what?
-			sumOfProperDivisorsMap.put(i, sumOfProperDivisors(i));
-	}
-
-	int sumOfProperDivisors(int number) {
-		return IntStream.rangeClosed(1, number - 1).filter(i -> number % i == 0).sum();
-	}
-
-	int sumOfProperDivisorsCached(int number) {
-		return sumOfProperDivisorsMap.get(number);
-	}
-
+	SumOfProperDivisorsCache cache = new SumOfProperDivisorsCache(65_000);
 
 	boolean isAbundant(int number) {
-		return sumOfProperDivisorsCached(number) > number;
+		return cache.get(number) > number;
 	}
 
-	Set<Integer> abundantNumbers = new HashSet<Integer>();
+	Set<Integer> abundantNumbers = new HashSet<>();
 
 	{
-
-		for (int i = 1; i <= 65000; ++i) { // TODO change magic number to what?
+		for (int i = 1; i <= 65_000; ++i) { // TODO change magic number to what?
 			if (isAbundant(i)) abundantNumbers.add(i);
-//			System.out.println(i);
-
 		}
 	}
 
@@ -49,24 +37,13 @@ public class Problem23 implements Problem<Integer> {
 	@Override
 	public Integer getCalculatedSolution() {
 		List<Integer> l = new ArrayList<>(abundantNumbers);
-		l.sort(new Comparator<Integer>() {
-			@Override
-			public int compare(Integer o1, Integer o2) {
-				return Integer.compare(o1, o2);
-			}
-		});
+		l.sort(Integer::compare);
 
-		long res = LongStream.range(1L, 65000L).filter(w -> !canBeWritten((int) w)).peek(System.out::println).sum();
-		return (int) (res );
+		return IntStream.range(1, 65000).filter(w -> !canBeWritten(w)).sum();
 	}
 
 	@Override
 	public Integer getExpectedSolution() {
 		return 4179871;
-	}
-
-	public static void main(String[] args) {
-
-
 	}
 }

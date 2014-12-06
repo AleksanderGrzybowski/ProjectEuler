@@ -1,33 +1,17 @@
 package problems;
 
-import annotations.Done;
+import utils.SumOfProperDivisorsCache;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import java.util.stream.IntStream;
 
-@Done
+
 public class Problem21 implements Problem<Integer> {
 
-	Map<Integer, Integer> sumOfProperDivisorsMap = new HashMap<>();
+	SumOfProperDivisorsCache cache = new SumOfProperDivisorsCache(10_000);
 
-	{
-		for (int i = 1; i <= 9999; ++i)
-			sumOfProperDivisorsMap.put(i, sumOfProperDivisors(i));
-	}
-
-	int sumOfProperDivisors(int number) {
-		return IntStream.rangeClosed(1, number - 1).filter(i -> number % i == 0).sum();
-	}
-
-	int sumOfProperDivisorsCached(int number) {
-		return sumOfProperDivisorsMap.get(number);
-	}
-
-	 boolean isAmicablePair(int a, int b) {
-		return (a != b && sumOfProperDivisorsCached(a) == b && sumOfProperDivisorsCached(b) == a);
+	boolean isAmicablePair(int a, int b) {
+		return (a != b && cache.get(a) == b && cache.get(b) == a);
 	}
 
 	@Override
