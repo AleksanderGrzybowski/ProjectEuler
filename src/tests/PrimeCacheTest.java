@@ -18,4 +18,12 @@ public class PrimeCacheTest {
 
 		Assert.assertEquals(expected, actual);
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void test_cant_request_prime_larger_than_cache_size() throws Exception {
+		PrimeCache primeCache = new PrimeCache(30);
+
+		primeCache.isPrime(100000);
+
+	}
 }

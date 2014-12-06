@@ -1,46 +1,39 @@
 package utils;
 
+import java.util.Set;
 import java.util.TreeSet;
 
 public class PrimeCache {
 
-	private TreeSet<Integer> primes = new TreeSet<Integer>(); // consider internally sorted list/set
+	private TreeSet<Integer> primes = new TreeSet<>();
+	private final int max;
 
 	public PrimeCache(int maximumInclusive) {
-		int tabsize = maximumInclusive-2+1;
-		int[] tab = new int[(int)tabsize];
-		for (int i = 2; i <= maximumInclusive; ++i)
-			tab[(int)(i-2)] = i;
+		this.max = maximumInclusive;
 
-		int ptr = 0;
+		int size = max - 2 + 1;
+		int[] tab = new int[size];
 
-		while (ptr < tabsize) {
-			if (tab[ptr] == 0) {
-				ptr++;
-				continue;
+		for (int i = 2; i <= max; ++i)
+			tab[(i - 2)] = i;
+
+		for (int ptr = 0; ptr < size; ++ptr) {
+			if (tab[ptr] != 0) {
+				primes.add(tab[ptr]);
+				for (int s = (ptr + tab[ptr]); s < size; s += tab[ptr]) {
+					tab[s] = 0;
+				}
 			}
-			primes.add(tab[ptr]);
-			for (int s = (ptr+tab[ptr]); s < tabsize; s += tab[ptr])
-				tab[s] = 0;
-			ptr++;
 		}
-//		System.out.println(tab[0]);
 	}
 
-	public boolean isPrime(int n) {
-		return primes.contains(n);
+	public boolean isPrime(int number) {
+		if (number > max)
+			throw new IllegalArgumentException("Prime check for " + number + " requested, but cache size is only " + max);
+		return primes.contains(number);
 	}
 
-//	List<Integer> toList() {
-//		return new ArrayList<>(primes);
-//	}
-
-
-	public static void main(String[] args) {
-
-		System.out.println("Start");
-		PrimeCache p = new PrimeCache(10_000_000);
-//		System.out.println(p.toList());
-		System.out.println("Juz");
+	public Set<Integer> toSet() {
+		return new TreeSet<>(primes);
 	}
 }
