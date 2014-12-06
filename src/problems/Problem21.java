@@ -11,22 +11,22 @@ import java.util.stream.IntStream;
 @Done
 public class Problem21 implements Problem<Integer> {
 
-	static Map<Integer, Integer> sumOfProperDivisorsMap = new HashMap<>();
+	Map<Integer, Integer> sumOfProperDivisorsMap = new HashMap<>();
 
-	static {
+	{
 		for (int i = 1; i <= 9999; ++i)
 			sumOfProperDivisorsMap.put(i, sumOfProperDivisors(i));
 	}
 
-	static int sumOfProperDivisors(int number) {
+	int sumOfProperDivisors(int number) {
 		return IntStream.rangeClosed(1, number - 1).filter(i -> number % i == 0).sum();
 	}
 
-	static int sumOfProperDivisorsCached(int number) {
+	int sumOfProperDivisorsCached(int number) {
 		return sumOfProperDivisorsMap.get(number);
 	}
 
-	static boolean isAmicablePair(int a, int b) {
+	 boolean isAmicablePair(int a, int b) {
 		return (a != b && sumOfProperDivisorsCached(a) == b && sumOfProperDivisorsCached(b) == a);
 	}
 
