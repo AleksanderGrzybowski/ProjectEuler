@@ -1,8 +1,11 @@
+package problems;
+
+import annotations.Done;
+
 import java.util.Comparator;
 import java.util.stream.IntStream;
 
 @Done
-@TakesTime
 public class Problem14 implements Problem<Integer> {
 
 	static int getCollatzSequenceLength(long number) {

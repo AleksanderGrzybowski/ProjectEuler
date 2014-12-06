@@ -1,3 +1,7 @@
+package problems;
+
+import annotations.Done;
+
 @Done
 public class Problem09 implements Problem<Integer> {
 	public static boolean isConditionMet(int a, int b, int c) {

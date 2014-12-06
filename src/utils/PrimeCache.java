@@ -3,6 +3,12 @@ package utils;
 import java.util.Set;
 import java.util.TreeSet;
 
+// This was previously used, elegant, but waaaay to slow to use here...
+//public static boolean isPrimeInt(int number) {
+//	return (number != 1) && IntStream.range(2, number).parallel().noneMatch(i -> number % i == 0);
+//}
+
+
 public class PrimeCache {
 
 	private TreeSet<Integer> primes = new TreeSet<>();

@@ -1,9 +1,12 @@
+package problems;
+
+import annotations.Done;
 import utils.PrimeCache;
 
 import java.util.stream.IntStream;
 
 @Done
-@TakesTime
+
 public class Problem07 implements Problem<Integer> {
 
 	PrimeCache pc = new PrimeCache(200_000);

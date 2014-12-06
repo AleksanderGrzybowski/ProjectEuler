@@ -1,3 +1,7 @@
+package problems;
+
+import annotations.Done;
+
 @Done
 public class Problem11 implements Problem<Integer> {
 
