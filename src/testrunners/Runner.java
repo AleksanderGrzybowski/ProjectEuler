@@ -14,7 +14,7 @@ public class Runner {
 		for (int i = 1; i <= 99; ++i) {
 			String className = "problems.Problem" + String.format("%02d", i);
 			try {
-				Class.forName(className).newInstance();
+				Class.forName(className);
 				list.add(className);
 			} catch (Exception ignored) {
 			}
