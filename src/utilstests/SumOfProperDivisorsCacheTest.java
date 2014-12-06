@@ -1,7 +1,8 @@
-package utils;
+package utilstests;
 
 import org.junit.Assert;
 import org.junit.Test;
+import utils.SumOfProperDivisorsCache;
 
 public class SumOfProperDivisorsCacheTest {
 	@Test
