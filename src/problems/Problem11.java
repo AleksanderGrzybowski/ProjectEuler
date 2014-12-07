@@ -5,7 +5,7 @@ import annotations.Done;
 @Done
 public class Problem11 implements Problem<Integer> {
 
-	int[][] tab = new int[][]{
+	static int[][] tab = new int[][]{
 			new int[]{8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8},
 			new int[]{49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0},
 			new int[]{81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65},
@@ -28,12 +28,12 @@ public class Problem11 implements Problem<Integer> {
 			new int[]{1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48},
 	};
 
-	private final int SIZE = tab.length;
-	private final int SUB = 4;
+	private static final int SIZE = tab.length;
+	private static final int SUB = 4;
 
 	@Override
 	public Integer getCalculatedSolution() {
-		int current = 0;
+		int currentMax = 0;
 
 		// horizontal
 		for (int i = 0; i < SIZE; ++i) {
@@ -41,7 +41,7 @@ public class Problem11 implements Problem<Integer> {
 				int c = 1;
 				for (int k = 0; k < SUB; ++k)
 					c *= tab[i][j + k];
-				if (c > current) current = c;
+				if (c > currentMax) currentMax = c;
 			}
 		}
 
@@ -51,7 +51,7 @@ public class Problem11 implements Problem<Integer> {
 				int c = 1;
 				for (int k = 0; k < SUB; ++k)
 					c *= tab[i + k][j];
-				if (c > current) current = c;
+				if (c > currentMax) currentMax = c;
 			}
 		}
 
@@ -61,21 +61,21 @@ public class Problem11 implements Problem<Integer> {
 				int c = 1;
 				for (int k = 0; k < SUB; ++k)
 					c *= tab[i + k][j + k];
-				if (c > current) current = c;
+				if (c > currentMax) currentMax = c;
 			}
 		}
 
 		// like a /
 		for (int i = 0; i < (SIZE - SUB); ++i) {
-			for (int j = (SUB-1); j < SIZE; ++j) {
+			for (int j = (SUB - 1); j < SIZE; ++j) {
 				int c = 1;
 				for (int k = 0; k < SUB; ++k)
 					c *= tab[i + k][j - k];
-				if (c > current) current = c;
+				if (c > currentMax) currentMax = c;
 			}
 		}
 
-		return current;
+		return currentMax;
 	}
 
 	@Override
