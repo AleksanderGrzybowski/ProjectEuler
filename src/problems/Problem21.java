@@ -1,11 +1,12 @@
 package problems;
 
+import annotations.Done;
 import utils.SumOfProperDivisorsCache;
 
 import java.util.HashSet;
 import java.util.Set;
 
-
+@Done
 public class Problem21 implements Problem<Integer> {
 
 	SumOfProperDivisorsCache cache = new SumOfProperDivisorsCache(10_000);
