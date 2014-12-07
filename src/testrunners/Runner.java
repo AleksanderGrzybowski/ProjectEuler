@@ -46,7 +46,6 @@ public class Runner {
 		List<String> classes = getAllProblemClasses();
 
 		for (String c : classes) {
-
 			try {
 
 				if (testGroup == TestGroup.ALL) {
@@ -55,9 +54,6 @@ public class Runner {
 					testClass(c);
 				} else if (testGroup == TestGroup.NOTDONE && !Class.forName(c).isAnnotationPresent(Done.class))
 					testClass(c);
-				else {
-//					throw new AssertionError();
-				}
 
 			} catch (ClassNotFoundException ignored) {
 				throw new AssertionError();
