@@ -23,20 +23,8 @@ public class Problem14 implements Problem<Integer> {
 		return length;
 	}
 
-	public Integer getCalculatedSolution_faster() {
-		int currentMaxLength = 0;
-		int numberWeSearchFor = 1;
-
-		for (int i = 1; i < 1_000_000; ++i) {
-			int length = getCollatzSequenceLength(i);
-			if (length > currentMaxLength) {
-				currentMaxLength = length;
-				numberWeSearchFor = i;
-			}
-		}
-
-		return numberWeSearchFor;
-	}
+	// there used to be a faster solution here, but was removed, because
+	// the following one is fast enough.
 
 	@Override
 	public Integer getCalculatedSolution() {
