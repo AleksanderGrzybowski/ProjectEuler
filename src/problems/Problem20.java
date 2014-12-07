@@ -10,7 +10,7 @@ import java.util.stream.LongStream;
 public class Problem20 implements Problem<Integer> {
 	BigInteger factorial(int number) {
 		return LongStream.rangeClosed(1, number).boxed().map(BigInteger::valueOf)
-				.reduce(BigInteger.ONE, (a,b) -> a.multiply(b));
+				.reduce(BigInteger.ONE, (a, b) -> a.multiply(b));
 	}
 
 	@Override
