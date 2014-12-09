@@ -1,3 +1,5 @@
+package problems;
+
 public class Problem21 implements Problem<Integer> {
 
 	@Override
