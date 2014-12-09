@@ -9,7 +9,7 @@ public class Problem21 implements Problem<Integer> {
 
 	@Override
 	public Integer getExpectedSolution() {
-		return 1337;
+		return 666;
 	}
 
 	public static void main(String[] args) {
