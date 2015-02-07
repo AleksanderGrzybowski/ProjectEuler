@@ -1,9 +1,12 @@
 package problems;
 
+import annotations.Done;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Done
 public class Problem41 implements Problem<Integer> {
 
 	// again, stream solution is too slow on my laptop, even .parallel()
