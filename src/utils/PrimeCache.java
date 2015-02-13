@@ -1,6 +1,5 @@
 package utils;
 
-import java.util.Set;
 import java.util.TreeSet;
 
 // This was previously used, elegant, but waaaay to slow to use here...
@@ -39,7 +38,7 @@ public class PrimeCache {
 		return primes.contains(number);
 	}
 
-	public Set<Integer> toSet() {
+	public TreeSet<Integer> toTreeSet() {
 		return new TreeSet<>(primes);
 	}
 }

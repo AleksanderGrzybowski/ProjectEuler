@@ -16,7 +16,7 @@ public class Problem49 implements Problem<Long> {
 
 	static List<Triple> getPossible4DigitSequences() {
 		List<Triple> result = new ArrayList<>();
-		List<Integer> startingPoints = cache.toSet().stream()
+		List<Integer> startingPoints = cache.toTreeSet().stream()
 				.filter(n -> (n >= 1000 && n <= 9999))
 				.collect(Collectors.toList());
 
