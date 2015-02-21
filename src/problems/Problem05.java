@@ -6,9 +6,6 @@ import annotations.Done;
 
 public class Problem05 implements Problem<Integer> {
 
-	static final int FIRST_DIVISOR = 1;
-	static final int LAST_DIVISOR = 20;
-
 	// the following solution is way more Java-8-ish, but slow...
 //	public IntPredicate getModPredicate(int number) {
 //		return x -> (x % number == 0);
@@ -29,11 +26,16 @@ public class Problem05 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
+		final int FIRST_DIVISOR = 1;
+		final int LAST_DIVISOR = 20;
+
 		outer:
-		for (int number = 1; true; number++) {
-			for (int divisor = FIRST_DIVISOR; divisor <= LAST_DIVISOR; ++divisor)
-				if (number % divisor != 0)
+		for (int number = 2; true; number += 2) { // small optimize - only even numbers considered
+			for (int divisor = FIRST_DIVISOR; divisor <= LAST_DIVISOR; ++divisor) {
+				if (number % divisor != 0) {
 					continue outer;
+				}
+			}
 			return number;
 		}
 	}
