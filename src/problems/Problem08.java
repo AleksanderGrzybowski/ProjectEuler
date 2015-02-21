@@ -3,7 +3,7 @@ package problems;
 import annotations.Done;
 
 import java.util.Arrays;
-import java.util.stream.LongStream;
+import java.util.stream.IntStream;
 
 @Done
 public class Problem08 implements Problem<Long> {
@@ -42,9 +42,10 @@ public class Problem08 implements Problem<Long> {
 	public Long getCalculatedSolution() {
 		final int LENGTH_OF_SUBSTRING = 13;
 
-		return LongStream.rangeClosed(0, numberString.length() - LENGTH_OF_SUBSTRING).boxed()
-				.map(i -> numberString.substring(i.intValue(), i.intValue() + LENGTH_OF_SUBSTRING))
-				.map(this::calculateProductOfDigits).mapToLong(i -> i).max().getAsLong();
+		return IntStream.rangeClosed(0, numberString.length() - LENGTH_OF_SUBSTRING)
+				.mapToObj(i -> numberString.substring(i, i + LENGTH_OF_SUBSTRING))
+				.mapToLong(this::calculateProductOfDigits)
+				.max().getAsLong();
 	}
 
 	@Override
