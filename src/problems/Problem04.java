@@ -14,10 +14,15 @@ public class Problem04 implements Problem<Integer> {
 	public Integer getCalculatedSolution() {
 		int currentBiggestPalindrome = 0;
 
-		for (int i = 100; i <= 999; ++i)
-			for (int j = 100; j <= 999; ++j)
-				if (isPalindrome(i * j) && (i * j > currentBiggestPalindrome))
-					currentBiggestPalindrome = i * j;
+		// 3-digit numbers
+		for (int i = 100; i <= 999; ++i) {
+			for (int j = 100; j <= 999; ++j) {
+				int product = i * j;
+				if (isPalindrome(product) && (product > currentBiggestPalindrome)) {
+					currentBiggestPalindrome = product;
+				}
+			}
+		}
 
 		return currentBiggestPalindrome;
 	}
