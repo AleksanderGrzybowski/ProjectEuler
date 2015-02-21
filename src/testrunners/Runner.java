@@ -41,6 +41,7 @@ public class Runner {
 			System.out.println("  PASS");
 		} else {
 			System.out.println("  FAIL: expected = " + expected + ", actual = " + actual);
+			System.exit(1);
 		}
 	}
 
