@@ -8,7 +8,10 @@ import java.util.stream.IntStream;
 public class Problem06 implements Problem<Integer> {
 
 	public IntStream getRange() {
-		return IntStream.rangeClosed(1, 100);
+		final int FIRST = 1;
+		final int LAST = 100;
+
+		return IntStream.rangeClosed(FIRST, LAST);
 	}
 
 	@Override
