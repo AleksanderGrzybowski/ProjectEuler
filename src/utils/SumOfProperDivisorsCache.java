@@ -6,18 +6,25 @@ import java.util.stream.IntStream;
 
 public class SumOfProperDivisorsCache {
 
-	private Map<Integer, Integer> sumOfProperDivisors = new HashMap<>();
+	private Map<Integer, Integer> sumsOfProperDivisors = new HashMap<>();
+	private int max;
 
-	int sumOfProperDivisors(int number) {
+	public static int sumOfProperDivisors(int number) {
 		return IntStream.rangeClosed(1, number - 1).filter(i -> number % i == 0).sum();
 	}
 
 	public SumOfProperDivisorsCache(int max) {
-		for (int i = 1; i <= max; ++i) // TODO change magic number to what?
-			sumOfProperDivisors.put(i, sumOfProperDivisors(i));
+		this.max = max;
+		for (int i = 1; i <= max; ++i) {
+			sumsOfProperDivisors.put(i, sumOfProperDivisors(i));
+		}
 	}
 
 	public int get(int number) {
-		return sumOfProperDivisors.get(number); // NPE possible
+		if (number > max) {
+			throw new IllegalArgumentException("Number " + number + " outside cache");
+		}
+
+		return sumsOfProperDivisors.get(number);
 	}
 }
