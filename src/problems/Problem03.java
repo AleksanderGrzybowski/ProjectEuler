@@ -7,6 +7,7 @@ import java.util.List;
 
 @Done
 public class Problem03 implements Problem<Long> {
+
 	public List<Long> factorize(long number) {
 		List<Long> factors = new ArrayList<>();
 		
@@ -25,10 +26,10 @@ public class Problem03 implements Problem<Long> {
 
 	@Override
 	public Long getCalculatedSolution() {
-		long number = 600851475143L;
-		List<Long> factors = factorize(number);
+		final long NUMBER = 600851475143L;
+		List<Long> factors = factorize(NUMBER);
 
-		return factors.stream().max((o1, o2) -> o1.compareTo(o2)).get();
+		return factors.stream().max(Long::compareTo).get();
 	}
 
 	@Override
