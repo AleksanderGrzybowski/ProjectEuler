@@ -14,7 +14,7 @@ public class Problem50 implements Problem<Integer> {
 	@Override
 	public Integer getCalculatedSolution() {
 		PrimeCache cache = new PrimeCache(LIMIT);
-		List<Integer> primes = new ArrayList<>(cache.toTreeSet());
+		List<Integer> primes = new ArrayList<>(cache.asSortedSet());
 
 		int currentResult = 0;
 		int currentLength = 0;

@@ -5,14 +5,13 @@ import utils.PrimeCache;
 
 import java.util.HashSet;
 import java.util.SortedSet;
-import java.util.TreeSet;
 import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
 @Done
 public class Problem47 implements Problem<Integer> {
 
-	static TreeSet<Integer> primes = new PrimeCache(1_000_000).toTreeSet();
+	static SortedSet<Integer> primes = new PrimeCache(1_000_000).asSortedSet();
 
 	static int numberOfPrimeFactors(int number) {
 		HashSet<Integer> factors = new HashSet<>();

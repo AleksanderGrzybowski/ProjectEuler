@@ -12,7 +12,7 @@ public class Problem46 implements Problem<Integer> {
 	static PrimeCache cache = new PrimeCache(1_000_000);
 
 	static boolean canBeWritten(int number) {
-		for (int i : cache.toTreeSet().headSet(number, true)) {
+		for (int i : cache.asSortedSet().headSet(number)) {
 			for (int j = 1; j <= number; ++j) {
 				if (number == i + 2 * j * j) {
 					return true;

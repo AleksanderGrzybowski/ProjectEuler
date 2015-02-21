@@ -9,7 +9,7 @@ import java.util.Set;
 @Done
 public class Problem35 implements Problem<Integer> {
 
-	static Set<Integer> primes = new PrimeCache(1_000_000).toTreeSet();
+	static Set<Integer> primes = new PrimeCache(1_000_000).asSortedSet();
 
 	static Set<Integer> getPossibleRotations(int number) {
 		HashSet<Integer> resultSet = new HashSet<>();

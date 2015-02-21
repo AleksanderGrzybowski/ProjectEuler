@@ -1,6 +1,5 @@
 package utilstests;
 
-import org.junit.Assert;
 import org.junit.Test;
 import utils.PrimeCache;
 
@@ -8,15 +7,17 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.junit.Assert.assertEquals;
+
 public class PrimeCacheTest {
 	@Test
 	public void test_all() {
 		PrimeCache primeCache = new PrimeCache(30);
 
 		Set<Integer> expected = new HashSet<>(Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19, 23, 29));
-		Set<Integer> actual = primeCache.toTreeSet();
+		Set<Integer> actual = primeCache.asSortedSet();
 
-		Assert.assertEquals(expected, actual);
+		assertEquals(expected, actual);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -24,6 +25,5 @@ public class PrimeCacheTest {
 		PrimeCache primeCache = new PrimeCache(30);
 
 		primeCache.isPrime(100000);
-
 	}
 }
