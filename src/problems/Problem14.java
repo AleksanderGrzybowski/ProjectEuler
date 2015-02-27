@@ -13,10 +13,11 @@ public class Problem14 implements Problem<Integer> {
 
 		while (number != 1) {
 			length++;
-			if (number % 2 == 0)
+			if (number % 2 == 0) {
 				number /= 2;
-			else
+			} else {
 				number = 3 * number + 1;
+			}
 		}
 
 		length++;

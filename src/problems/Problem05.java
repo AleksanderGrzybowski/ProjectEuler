@@ -3,7 +3,6 @@ package problems;
 import annotations.Done;
 
 @Done
-
 public class Problem05 implements Problem<Integer> {
 
 	// the following solution is way more Java-8-ish, but slow...

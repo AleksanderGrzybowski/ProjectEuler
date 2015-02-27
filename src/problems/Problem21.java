@@ -17,17 +17,17 @@ public class Problem21 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		Set<Integer> resultSet = new HashSet<>();
+		Set<Integer> result = new HashSet<>();
 
 		for (int i = 1; i < 10_000; i++) {
 			for (int j = 1; j < 10_000; j++) {
 				if (isAmicablePair(i, j)) {
-					resultSet.add(i);
-					resultSet.add(j);
+					result.add(i);
+					result.add(j);
 				}
 			}
 		}
-		return resultSet.stream().mapToInt(i -> i).sum();
+		return result.stream().mapToInt(i -> i).sum();
 	}
 
 	@Override

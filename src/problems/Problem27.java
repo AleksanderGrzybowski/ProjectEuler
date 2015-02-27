@@ -8,7 +8,7 @@ public class Problem27 implements Problem<Integer> {
 
 	static PrimeCache cache = new PrimeCache(1_000_000);
 
-	public static int getNumberOfPrimesForPolynomial(int a, int b) {
+	public static int numberOfPrimesForPolynomial(int a, int b) {
 		for (int n = 0; true; n++) {
 			int probablePrime = (n * n) + (a * n) + b;
 			if (!cache.isPrime(probablePrime)) {
@@ -22,9 +22,12 @@ public class Problem27 implements Problem<Integer> {
 		int product = 0;
 		int currentMaximumNumPrimes = 0;
 
-		for (int a = -999; a <= 999; ++a) {
-			for (int b = -999; b <= 999; ++b) {
-				int primesNum = getNumberOfPrimesForPolynomial(a, b);
+		final int MIN = -999;
+		final int MAX = 999;
+
+		for (int a = MIN; a <= MAX; ++a) {
+			for (int b = MIN; b <= MAX; ++b) {
+				int primesNum = numberOfPrimesForPolynomial(a, b);
 				if (primesNum > currentMaximumNumPrimes) {
 					currentMaximumNumPrimes = primesNum;
 					product = a * b;

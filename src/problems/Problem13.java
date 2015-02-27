@@ -115,10 +115,12 @@ public class Problem13 implements Problem<String> {
 
 	@Override
 	public String getCalculatedSolution() {
+		final int NUMBER_OF_DIGITS = 10;
+
 		return numbers.stream()
 				.reduce(BigInteger::add)
 				.get()
-				.toString().substring(0, 10);
+				.toString().substring(0, NUMBER_OF_DIGITS);
 	}
 
 	@Override

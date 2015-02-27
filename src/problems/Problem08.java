@@ -32,7 +32,7 @@ public class Problem08 implements Problem<Long> {
 					"71636269561882670428252483600823257530420752963450";
 	// @formatter:on
 
-	public long calculateProductOfDigits(String input) {
+	public long productOfDigits(String input) {
 		return Arrays.stream(input.split(""))
 				.map(Long::valueOf)
 				.reduce(1L, (a, b) -> a * b);
@@ -44,7 +44,7 @@ public class Problem08 implements Problem<Long> {
 
 		return IntStream.rangeClosed(0, numberString.length() - LENGTH_OF_SUBSTRING)
 				.mapToObj(i -> numberString.substring(i, i + LENGTH_OF_SUBSTRING))
-				.mapToLong(this::calculateProductOfDigits)
+				.mapToLong(this::productOfDigits)
 				.max().getAsLong();
 	}
 

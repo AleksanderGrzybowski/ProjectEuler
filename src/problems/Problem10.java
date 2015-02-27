@@ -9,12 +9,12 @@ import java.util.stream.IntStream;
 public class Problem10 implements Problem<Long> {
 
 	public static final int MAX = 2_000_000;
-	PrimeCache primeCache = new PrimeCache(MAX);
+	PrimeCache cache = new PrimeCache(MAX);
 
 	@Override
 	public Long getCalculatedSolution() {
 		return IntStream.range(1, MAX)
-				.filter(primeCache::isPrime)
+				.filter(cache::isPrime)
 				.mapToLong(i -> i)
 				.sum();
 	}

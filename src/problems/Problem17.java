@@ -1011,10 +1011,10 @@ public class Problem17 implements Problem<Integer> {
 			"one thousand");
 
 	public static int countLetters(String word) {
-		Predicate<String> predicate = t -> (!t.equals(" ") && !t.equals("-"));
+		Predicate<String> ignoreNonCharacters = t -> (!t.equals(" ") && !t.equals("-"));
 
 		return (int) Arrays.stream(word.split(""))
-				.filter(predicate)
+				.filter(ignoreNonCharacters)
 				.count();
 	}
 

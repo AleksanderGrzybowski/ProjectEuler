@@ -15,7 +15,8 @@ public class Problem30 implements Problem<Integer> {
 				.map(i -> i * i * i * i * i)
 				.sum() == n;
 
-		return IntStream.rangeClosed(2, 1_000_000).filter(canBeWritten).sum();
+		final int LIMIT = 1_000_000;
+		return IntStream.rangeClosed(2, LIMIT).filter(canBeWritten).sum();
 	}
 
 	@Override

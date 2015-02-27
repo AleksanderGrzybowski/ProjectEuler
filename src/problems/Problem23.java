@@ -3,10 +3,8 @@ package problems;
 import annotations.Done;
 import utils.SumOfProperDivisorsCache;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Done
@@ -18,12 +16,13 @@ public class Problem23 implements Problem<Integer> {
 		return cache.get(number) > number;
 	}
 
-	Set<Integer> abundantNumbers = new HashSet<>();
+	Set<Integer> abundantNumbers;
+	final int MAX = 65_000;
 
 	public Problem23() {
-		for (int i = 1; i <= 65_000; ++i) { // TODO change magic number to what?
-			if (isAbundant(i)) abundantNumbers.add(i);
-		}
+		abundantNumbers = IntStream.rangeClosed(1, MAX)
+				.filter(this::isAbundant)
+				.boxed().collect(Collectors.toSet());
 	}
 
 	boolean canBeWritten(int number) {
@@ -36,10 +35,9 @@ public class Problem23 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		List<Integer> l = new ArrayList<>(abundantNumbers);
-		l.sort(Integer::compare);
-
-		return IntStream.range(1, 65000).filter(w -> !canBeWritten(w)).sum();
+		return IntStream.range(1, MAX)
+				.filter(w -> !canBeWritten(w))
+				.sum();
 	}
 
 	@Override

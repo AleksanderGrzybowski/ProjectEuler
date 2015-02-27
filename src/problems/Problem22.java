@@ -5,7 +5,7 @@ import annotations.Done;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.LongStream;
+import java.util.stream.IntStream;
 
 @Done
 public class Problem22 implements Problem<Long> {
@@ -33,8 +33,8 @@ public class Problem22 implements Problem<Long> {
 	@Override
 	public Long getCalculatedSolution() {
 		// index from 1
-		return LongStream.range(0, names.size())
-				.map(i -> (i + 1) * calcScore(names.get((int) i)))
+		return IntStream.range(0, names.size())
+				.mapToLong(i -> (i + 1) * calcScore(names.get(i)))
 				.sum();
 	}
 

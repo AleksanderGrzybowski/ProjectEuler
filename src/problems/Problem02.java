@@ -10,10 +10,10 @@ public class Problem02 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		final int MAXIMUM_VALUE = 4_000_000;
+		final int LIMIT = 4_000_000;
 		IntPredicate evenValueConstraint = i -> (i % 2 == 0);
 
-		return FibonacciNumbers.generateUpTo(MAXIMUM_VALUE).stream().mapToInt(i -> i)
+		return FibonacciNumbers.generateUpTo(LIMIT).stream().mapToInt(i -> i)
 				.filter(evenValueConstraint)
 				.sum();
 	}

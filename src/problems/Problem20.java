@@ -16,7 +16,8 @@ public class Problem20 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		return Arrays.stream(factorial(100).toString().split(""))
+		final int NUMBER = 100;
+		return Arrays.stream(factorial(NUMBER).toString().split(""))
 				.mapToInt(Integer::valueOf)
 				.sum();
 	}

@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 @Done
 public class Problem06 implements Problem<Integer> {
 
-	public IntStream getRange() {
+	public IntStream range() {
 		final int FIRST = 1;
 		final int LAST = 100;
 
@@ -16,8 +16,8 @@ public class Problem06 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		int sumOfSquares = getRange().map(i -> i * i).sum();
-		int sum = getRange().sum();
+		int sumOfSquares = range().map(i -> i * i).sum();
+		int sum = range().sum();
 		int squareOfSum = sum * sum;
 
 		return squareOfSum - sumOfSquares;

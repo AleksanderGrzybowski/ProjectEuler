@@ -6,17 +6,21 @@ import annotations.Done;
 public class Problem04 implements Problem<Integer> {
 
 	public boolean isPalindrome(int number) {
-		String numberString = Integer.toString(number);
-		return new StringBuilder(numberString).reverse().toString().equals(numberString);
+		String orig = Integer.toString(number);
+		String reversed = new StringBuilder(orig).reverse().toString();
+
+		return reversed.equals(orig);
 	}
 
 	@Override
 	public Integer getCalculatedSolution() {
 		int currentBiggestPalindrome = 0;
 
-		// 3-digit numbers
-		for (int i = 100; i <= 999; ++i) {
-			for (int j = 100; j <= 999; ++j) {
+		final int FIRST = 100;
+		final int LAST = 999;
+
+		for (int i = FIRST; i <= LAST; ++i) {
+			for (int j = FIRST; j <= LAST; ++j) {
 				int product = i * j;
 				if (isPalindrome(product) && (product > currentBiggestPalindrome)) {
 					currentBiggestPalindrome = product;

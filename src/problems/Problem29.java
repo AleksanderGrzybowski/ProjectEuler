@@ -13,8 +13,11 @@ public class Problem29 implements Problem<Integer> {
 	public Integer getCalculatedSolution() {
 		Set<BigInteger> set = new HashSet<>();
 
-		for (int a = 2; a <= 100; a++) {
-			for (int b = 2; b <= 100; b++) {
+		final int MIN = 2;
+		final int MAX = 100;
+
+		for (int a = MIN; a <= MAX; a++) {
+			for (int b = MIN; b <= MAX; b++) {
 				set.add(BigInteger.valueOf(a).pow(b));
 			}
 		}

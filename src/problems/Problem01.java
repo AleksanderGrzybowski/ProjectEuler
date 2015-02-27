@@ -10,14 +10,14 @@ public class Problem01 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		IntPredicate isDivisibleBy3 = i -> (i % 3 == 0);
-		IntPredicate isDivisibleBy5 = i -> (i % 5 == 0);
-		IntPredicate criteria = isDivisibleBy3.or(isDivisibleBy5);
+		IntPredicate isAMultipleOf3 = i -> (i % 3 == 0);
+		IntPredicate isAMultipleOf5 = i -> (i % 5 == 0);
+		IntPredicate criteria = isAMultipleOf3.or(isAMultipleOf5);
 
-		final int START_NUMBER_INCLUSIVE = 0;
-		final int END_NUMBER_EXCLUSIVE = 999;
+		final int START = 0;
+		final int END = 999;
 
-		return IntStream.rangeClosed(START_NUMBER_INCLUSIVE, END_NUMBER_EXCLUSIVE)
+		return IntStream.rangeClosed(START, END)
 				.filter(criteria)
 				.sum();
 	}

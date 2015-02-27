@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 @Done
 public class Problem12 implements Problem<Integer> {
 
-	static class TriangleNumbersSupplier implements IntSupplier {
+	static class TriangleNumbers implements IntSupplier {
 
 		int sum = 0;
 		int current = 1;
@@ -33,10 +33,10 @@ public class Problem12 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		final int MIN = 500;
+		final int LIMIT = 500;
 
-		return IntStream.generate(new TriangleNumbersSupplier())
-				.filter(i -> numberOfDivisors(i) > MIN)
+		return IntStream.generate(new TriangleNumbers())
+				.filter(i -> numberOfDivisors(i) > LIMIT)
 				.findFirst().getAsInt();
 	}
 
