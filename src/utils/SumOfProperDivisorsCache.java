@@ -2,7 +2,6 @@ package utils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 public class SumOfProperDivisorsCache {
 
@@ -10,7 +9,14 @@ public class SumOfProperDivisorsCache {
 	private int max;
 
 	public static int sumOfProperDivisors(int number) {
-		return IntStream.rangeClosed(1, number - 1).filter(i -> number % i == 0).sum();
+		// this is too slow, TODO: replace with better method
+//		return IntStream.rangeClosed(1, number - 1).filter(i -> number % i == 0).sum();
+		int sum = 0;
+		for (int i = 1; i < number; ++i) {
+			if (number % i == 0)
+				sum += i;
+		}
+		return sum;
 	}
 
 	public SumOfProperDivisorsCache(int max) {

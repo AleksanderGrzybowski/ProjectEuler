@@ -6,12 +6,14 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
+import static utils.Common.naturalNumbers;
+
 @Done
 public class Problem25 implements Problem<Integer> {
 
 	Map<Integer, BigInteger> cache = new HashMap<>();
 
-	{
+	public Problem25() {
 		cache.put(1, BigInteger.ONE);
 		cache.put(2, BigInteger.ONE);
 	}
@@ -24,11 +26,9 @@ public class Problem25 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		for (int i = 1; ; i++) {
-			if (fib(i).toString().length() == 1000) {
-				return i;
-			}
-		}
+		return naturalNumbers()
+				.filter(i -> fib(i).toString().length() == 1000)
+				.findFirst().getAsInt();
 	}
 
 	@Override

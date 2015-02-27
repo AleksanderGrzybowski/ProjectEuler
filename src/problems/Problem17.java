@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 @Done
 public class Problem17 implements Problem<Integer> {
 
-	List<String> wordsList = Arrays.asList("one",
+	List<String> words = Arrays.asList("one",
 			"two",
 			"three",
 			"four",
@@ -1010,19 +1010,19 @@ public class Problem17 implements Problem<Integer> {
 			"nine hundred and ninety-nine",
 			"one thousand");
 
-	@Override
-	public Integer getCalculatedSolution() {
-		return wordsList.stream()
-				.mapToInt(this::countLetters)
-				.sum();
-	}
-
-	public int countLetters(String word) {
+	public static int countLetters(String word) {
 		Predicate<String> predicate = t -> (!t.equals(" ") && !t.equals("-"));
 
 		return (int) Arrays.stream(word.split(""))
 				.filter(predicate)
 				.count();
+	}
+
+	@Override
+	public Integer getCalculatedSolution() {
+		return words.stream()
+				.mapToInt(Problem17::countLetters)
+				.sum();
 	}
 
 	@Override

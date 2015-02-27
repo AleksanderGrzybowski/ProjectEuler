@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 @Done
 public class Problem14 implements Problem<Integer> {
 
-	int getCollatzSequenceLength(long number) {
+	static int collatzSequenceLength(long number) {
 		int length = 0;
 
 		while (number != 1) {
@@ -28,7 +28,10 @@ public class Problem14 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		return IntStream.range(1, 1_000_000).boxed().max(Comparator.comparing(i -> getCollatzSequenceLength(i))).get();
+		final int MAX = 1_000_000;
+		return IntStream.range(1, MAX).boxed()
+				.max(Comparator.comparing(i -> collatzSequenceLength(i)))
+				.get();
 	}
 
 	@Override

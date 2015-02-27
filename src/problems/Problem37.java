@@ -1,11 +1,11 @@
 package problems;
 
 import annotations.Done;
+import utils.Common;
 import utils.PrimeCache;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 @Done
 public class Problem37 implements Problem<Integer> {
@@ -37,7 +37,7 @@ public class Problem37 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		return IntStream.iterate(11, i -> i+1).filter(Problem37::isTruncatablePrime).limit(NUMBER_OF_ELEMENTS).sum();
+		return Common.naturalNumbers(11).filter(Problem37::isTruncatablePrime).limit(NUMBER_OF_ELEMENTS).sum();
 	}
 
 	@Override

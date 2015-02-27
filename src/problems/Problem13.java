@@ -9,7 +9,7 @@ import java.util.List;
 @Done
 public class Problem13 implements Problem<String> {
 
-	List<BigInteger> numbersToSum = Arrays.asList(
+	List<BigInteger> numbers = Arrays.asList(
 			new BigInteger("37107287533902102798797998220837590246510135740250"),
 			new BigInteger("46376937677490009712648124896970078050417018260538"),
 			new BigInteger("74324986199524741059474233309513058123726617309629"),
@@ -115,7 +115,10 @@ public class Problem13 implements Problem<String> {
 
 	@Override
 	public String getCalculatedSolution() {
-		return numbersToSum.stream().reduce((a, b) -> a.add(b)).get().toString().substring(0, 10);
+		return numbers.stream()
+				.reduce(BigInteger::add)
+				.get()
+				.toString().substring(0, 10);
 	}
 
 	@Override

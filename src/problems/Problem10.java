@@ -8,11 +8,12 @@ import java.util.stream.IntStream;
 @Done
 public class Problem10 implements Problem<Long> {
 
-	PrimeCache primeCache = new PrimeCache(2_000_000);
+	public static final int MAX = 2_000_000;
+	PrimeCache primeCache = new PrimeCache(MAX);
 
 	@Override
 	public Long getCalculatedSolution() {
-		return IntStream.range(1, 2_000_000)
+		return IntStream.range(1, MAX)
 				.filter(primeCache::isPrime)
 				.mapToLong(i -> i)
 				.sum();

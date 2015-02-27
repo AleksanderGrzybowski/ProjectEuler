@@ -20,7 +20,7 @@ public class Problem23 implements Problem<Integer> {
 
 	Set<Integer> abundantNumbers = new HashSet<>();
 
-	{
+	public Problem23() {
 		for (int i = 1; i <= 65_000; ++i) { // TODO change magic number to what?
 			if (isAbundant(i)) abundantNumbers.add(i);
 		}
