@@ -10,7 +10,6 @@ import java.util.List;
 @Done
 public class Problem37 implements Problem<Integer> {
 
-	public static final int NUMBER_OF_ELEMENTS = 11;
 	static PrimeCache cache = new PrimeCache(1_000_000);
 
 	static List<Integer> slice(int number) {
@@ -37,7 +36,10 @@ public class Problem37 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		return Common.naturalNumbers(11).filter(Problem37::isTruncatablePrime).limit(NUMBER_OF_ELEMENTS).sum();
+		final int FIRST_CONSIDERED_PRIME = 11;
+		final int NUMBER_OF_ELEMENTS = 11;
+
+		return Common.naturalNumbers(FIRST_CONSIDERED_PRIME).filter(Problem37::isTruncatablePrime).limit(NUMBER_OF_ELEMENTS).sum();
 	}
 
 	@Override

@@ -16,8 +16,9 @@ public class Problem33 implements Problem<Integer> {
 			return gcd(a - b, b);
 		} else if (a < b) {
 			return gcd(a, b - a);
-		} else
+		} else {
 			return a;
+		}
 	}
 
 	static boolean isCuriousFraction(int num, int den) {
@@ -49,7 +50,7 @@ public class Problem33 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		Set<Pair> resultSet = new HashSet<>();
+		Set<Pair> result = new HashSet<>();
 
 		for (int den = 1; den <= 99; ++den) {
 			for (int num = 1; num < den; ++num) {
@@ -60,13 +61,13 @@ public class Problem33 implements Problem<Integer> {
 				}
 
 				if (isCuriousFraction(num, den)) {
-					resultSet.add(new Pair(num, den));
+					result.add(new Pair(num, den));
 				}
 			}
 		}
 
-		int productNum = resultSet.stream().mapToInt(p -> p.a).reduce(1, (t, u) -> t * u);
-		int productDen = resultSet.stream().mapToInt(p -> p.b).reduce(1, (t, u) -> t * u);
+		int productNum = result.stream().mapToInt(p -> p.a).reduce(1, (t, u) -> t * u);
+		int productDen = result.stream().mapToInt(p -> p.b).reduce(1, (t, u) -> t * u);
 
 		return productDen / gcd(productDen, productNum);
 	}

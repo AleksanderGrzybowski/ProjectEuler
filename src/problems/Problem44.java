@@ -13,7 +13,9 @@ public class Problem44 implements Problem<Integer> {
 	@Override
 	public Integer getCalculatedSolution() {
 		IntUnaryOperator pentFormula = n -> (n * (3 * n - 1)) / 2;
-		Set<Integer> set = IntStream.rangeClosed(1, 10000).map(pentFormula).boxed().collect(Collectors.toSet());
+		final int LIMIT = 10000;
+
+		Set<Integer> set = IntStream.rangeClosed(1, LIMIT).map(pentFormula).boxed().collect(Collectors.toSet());
 
 		int d = Integer.MAX_VALUE;
 

@@ -10,7 +10,9 @@ public class Problem48 implements Problem<String> {
 
 	@Override
 	public String getCalculatedSolution() {
-		String whole = IntStream.rangeClosed(1, 1000).boxed()
+		final int FIRST = 1;
+		final int LAST = 1000;
+		String whole = IntStream.rangeClosed(FIRST, LAST).boxed()
 				.map(i -> BigInteger.valueOf(i).pow(i))
 				.reduce(BigInteger.ZERO, BigInteger::add)
 				.toString();

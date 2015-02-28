@@ -12,13 +12,14 @@ public class Problem45 implements Problem<Long> {
 
 	@Override
 	public Long getCalculatedSolution() {
-		LongUnaryOperator triangleMapper = i -> (i * (i + 1)) / 2;
-		LongUnaryOperator pentagonalMapper = i -> (i * (3 * i - 1)) / 2;
-		LongUnaryOperator hexagonalMapper = i -> (i * (2 * i - 1));
+		LongUnaryOperator triangleFunction = i -> (i * (i + 1)) / 2;
+		LongUnaryOperator pentagonalFunction = i -> (i * (3 * i - 1)) / 2;
+		LongUnaryOperator hexagonalFunction = i -> (i * (2 * i - 1));
 
-		Set<Long> triangle = LongStream.rangeClosed(1, 1000000).map(triangleMapper).boxed().collect(Collectors.toSet());
-		Set<Long> pentagonal = LongStream.rangeClosed(1, 1000000).map(pentagonalMapper).boxed().collect(Collectors.toSet());
-		Set<Long> hexagonal = LongStream.rangeClosed(1, 1000000).map(hexagonalMapper).boxed().collect(Collectors.toSet());
+		final int LIMIT = 1000000;
+		Set<Long> triangle = LongStream.rangeClosed(1, LIMIT).map(triangleFunction).boxed().collect(Collectors.toSet());
+		Set<Long> pentagonal = LongStream.rangeClosed(1, LIMIT).map(pentagonalFunction).boxed().collect(Collectors.toSet());
+		Set<Long> hexagonal = LongStream.rangeClosed(1, LIMIT).map(hexagonalFunction).boxed().collect(Collectors.toSet());
 
 		triangle.retainAll(pentagonal);
 		triangle.retainAll(hexagonal);

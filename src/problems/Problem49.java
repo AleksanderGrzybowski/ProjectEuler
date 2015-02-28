@@ -5,7 +5,7 @@ import utils.PrimeCache;
 import utils.Triple;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,13 +37,15 @@ public class Problem49 implements Problem<Long> {
 	static boolean arePermutations(int a, int b) {
 		List<Integer> listA = Integer.toString(a).chars().boxed().collect(Collectors.toList());
 		List<Integer> listB = Integer.toString(b).chars().boxed().collect(Collectors.toList());
-		listA.sort(Comparator.naturalOrder());
-		listB.sort(Comparator.naturalOrder());
+
+		Collections.sort(listA);
+		Collections.sort(listB);
+
 		return listA.equals(listB);
 
 	}
 
-	static boolean areElementsOfTriplePrime(Triple t) {
+	static boolean areElementsPrime(Triple t) {
 		return cache.isPrime(t.a) && cache.isPrime(t.b) && cache.isPrime(t.c);
 	}
 
@@ -55,7 +57,7 @@ public class Problem49 implements Problem<Long> {
 	@Override
 	public Long getCalculatedSolution() {
 		Triple result = getPossible4DigitSequences().stream()
-				.filter(Problem49::areElementsOfTriplePrime)
+				.filter(Problem49::areElementsPrime)
 				.filter(Problem49::areElementsPermutationsOfEachOther)
 				.skip(1).findFirst().get();
 

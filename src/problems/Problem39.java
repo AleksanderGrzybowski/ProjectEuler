@@ -17,8 +17,9 @@ public class Problem39 implements Problem<Integer> {
 
 				int c = p - b - a;
 				// naive, but works
-				if ((a + b + c != p) || c <= 0)
+				if ((a + b + c != p) || c <= 0) {
 					continue;
+				}
 
 				if (a * a + b * b == c * c) {
 					int[] sides = new int[]{a, b, c};
@@ -35,7 +36,10 @@ public class Problem39 implements Problem<Integer> {
 		int currentMaxP = 0;
 		int currentMaxSols = 0;
 
-		for (int p = 3; p <= 1000; ++p) {
+		final int MIN_P = 3;
+		final int MAX_P = 1000;
+
+		for (int p = MIN_P; p <= MAX_P; ++p) {
 			int nSols = numberOfSolutionsFor(p);
 
 			if (currentMaxSols < nSols) {

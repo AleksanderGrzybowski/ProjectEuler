@@ -40,7 +40,8 @@ public class Problem47 implements Problem<Integer> {
 						&& numberOfPrimeFactors(i + 2) == 4
 						&& numberOfPrimeFactors(i + 3) == 4;
 
-		return IntStream.rangeClosed(1, 100000000).filter(predicate).findFirst().getAsInt();
+		final int LIMIT = 100000000;
+		return IntStream.rangeClosed(1, LIMIT).filter(predicate).findFirst().getAsInt();
 	}
 
 	@Override

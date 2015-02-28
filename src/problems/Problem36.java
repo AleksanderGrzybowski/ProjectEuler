@@ -18,7 +18,9 @@ public class Problem36 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		return IntStream.range(1, 1_000_000)
+		final int LIMIT = 1_000_000;
+
+		return IntStream.range(1, LIMIT)
 				.filter(Problem36::isPalindromicInBothBases)
 				.sum();
 	}

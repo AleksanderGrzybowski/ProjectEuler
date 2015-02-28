@@ -8,11 +8,10 @@ public class Problem40 implements Problem<Integer> {
 	@Override
 	public Integer getCalculatedSolution() {
 		StringBuilder sb = new StringBuilder();
-		int i = 1;
 
-		while (sb.length() <= 1000000) {
+		final int MAX_N = 1000000;
+		for (int i = 1; sb.length() <= MAX_N; ++i) {
 			sb.append(i);
-			i++;
 		}
 
 		int[] positions = new int[]{1, 10, 100, 1000, 10000, 100000};

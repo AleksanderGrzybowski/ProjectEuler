@@ -21,7 +21,9 @@ public class Problem41 implements Problem<Integer> {
 
 		// here we have 10M as the limit. It's set to 10M because
 		// it would take too long to compute all possibilities up to 1G.
-		return IntStream.rangeClosed(0, 10_000_000).parallel()
+		final int LIMIT = 10_000_000;
+
+		return IntStream.rangeClosed(0, LIMIT).parallel()
 				.filter(n -> Common.isPandigital(n) && isPrime(n))
 				.max().getAsInt();
 	}

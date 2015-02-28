@@ -12,17 +12,17 @@ public class Problem35 implements Problem<Integer> {
 	static Set<Integer> primes = new PrimeCache(1_000_000).asSortedSet();
 
 	static Set<Integer> getPossibleRotations(int number) {
-		HashSet<Integer> resultSet = new HashSet<>();
-		String numberString = Integer.toString(number);
-		StringBuilder sb = new StringBuilder(numberString);
+		HashSet<Integer> rotations = new HashSet<>();
+		StringBuilder sb = new StringBuilder(Integer.toString(number));
+		int length = sb.length();
 
-		for (int i = 0; i < numberString.length(); ++i) {
+		for (int i = 0; i < length; ++i) {
 			char first = sb.charAt(0);
 			sb.deleteCharAt(0);
 			sb.append(first);
-			resultSet.add(Integer.parseInt(sb.toString()));
+			rotations.add(Integer.parseInt(sb.toString()));
 		}
-		return resultSet;
+		return rotations;
 	}
 
 	static boolean isCircularPrime(int number) {

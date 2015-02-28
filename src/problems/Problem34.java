@@ -20,7 +20,9 @@ public class Problem34 implements Problem<Integer> {
 
 	@Override
 	public Integer getCalculatedSolution() {
-		return IntStream.range(3, 1_000_000)
+		final int LIMIT = 1_000_000;
+
+		return IntStream.range(3, LIMIT)
 				.filter(Problem34::isCurious)
 				.sum();
 	}

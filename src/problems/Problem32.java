@@ -10,8 +10,10 @@ import java.util.Set;
 public class Problem32 implements Problem<Integer> {
 
 	private static boolean canBeWritten(int i, int j) {
-		long number = Long.parseLong("" + i + j + (i * j));
-		return Long.toString(number).length() == 9 && Common.isPandigital(number);
+
+		String numberString = "" + i + j + (i * j);
+		long number = Long.parseLong(numberString);
+		return numberString.length() == 9 && Common.isPandigital(number);
 	}
 
 	@Override
