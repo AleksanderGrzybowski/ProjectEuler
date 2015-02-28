@@ -1,25 +1,12 @@
 package problems;
 
 import annotations.Done;
+import utils.Common;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Done
 public class Problem38 implements Problem<Long> {
-
-	static boolean isPandigitalFrom1To9(long number) {
-		String numberString = Long.toString(number);
-		List<Integer> digits = numberString.chars().map(i -> i - '0').boxed().collect(Collectors.toList());
-
-		Collections.sort(digits);
-		return digits.equals(expected1to9);
-	}
-
-	static List<Integer> expected1to9 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
 	static String concat(int number, int maxN) {
 		return IntStream.rangeClosed(1, maxN).boxed()
@@ -38,7 +25,7 @@ public class Problem38 implements Problem<Long> {
 					continue;
 
 				long number = Long.parseLong(s);
-				if (isPandigitalFrom1To9(number)) {
+				if (Common.isPandigitalFrom1To9(number)) {
 					if (number > curmax) {
 						curmax = number;
 					}

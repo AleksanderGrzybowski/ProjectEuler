@@ -1,25 +1,16 @@
 package problems;
 
 import annotations.Done;
+import utils.Common;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashSet;
+import java.util.Set;
 
 @Done
 public class Problem32 implements Problem<Integer> {
 
-	static List<Integer> expected1to9 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-
-	static boolean isPandigitalFrom1To9(long number) {
-		String numberString = Long.toString(number);
-		List<Integer> digits = numberString.chars().map(i -> i - '0').boxed().collect(Collectors.toList());
-
-		Collections.sort(digits);
-		return digits.equals(expected1to9);
-	}
-
 	private static boolean canBeWritten(int i, int j) {
-		return isPandigitalFrom1To9(Long.parseLong("" + i + j + (i * j)));
+		return Common.isPandigitalFrom1To9(Long.parseLong("" + i + j + (i * j)));
 	}
 
 	@Override

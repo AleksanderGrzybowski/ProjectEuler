@@ -1,5 +1,8 @@
 package utils;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Common {
@@ -38,5 +41,25 @@ public class Common {
 
 	public static IntStream naturalNumbers() {
 		return naturalNumbers(1);
+	}
+
+
+	public static boolean isPandigitalFrom1To9(long number) {
+		// TODO why is this first condition needed at all?
+		return Long.toString(number).length() == 9 && isPandigital(number);
+	}
+
+	public static boolean isPandigital(long number) {
+		String numberString = Long.toString(number);
+		List<Integer> digits = numberString.chars().map(i -> i - '0').boxed().collect(Collectors.toList());
+
+		if (digits.contains(0)) { // rule says: from 1 up to n, zero is banned
+			return false;
+		}
+
+		Collections.sort(digits);
+
+		List<Integer> expected1toN = IntStream.rangeClosed(1, numberString.length()).boxed().collect(Collectors.toList());
+		return digits.equals(expected1toN);
 	}
 }
