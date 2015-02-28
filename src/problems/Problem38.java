@@ -25,7 +25,7 @@ public class Problem38 implements Problem<Long> {
 					continue;
 
 				long number = Long.parseLong(s);
-				if (Common.isPandigitalFrom1To9(number)) {
+				if (Common.isPandigital(number)) {
 					if (number > curmax) {
 						curmax = number;
 					}

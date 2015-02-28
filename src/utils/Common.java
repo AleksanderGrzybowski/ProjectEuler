@@ -43,12 +43,6 @@ public class Common {
 		return naturalNumbers(1);
 	}
 
-
-	public static boolean isPandigitalFrom1To9(long number) {
-		// TODO why is this first condition needed at all?
-		return Long.toString(number).length() == 9 && isPandigital(number);
-	}
-
 	public static boolean isPandigital(long number) {
 		String numberString = Long.toString(number);
 		List<Integer> digits = numberString.chars().map(i -> i - '0').boxed().collect(Collectors.toList());
