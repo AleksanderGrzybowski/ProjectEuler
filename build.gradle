@@ -2,8 +2,11 @@ group 'org.kelog.projecteuler'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
+
+mainClassName = "projecteuler.runner.Runner"
 
 repositories {
     mavenCentral()
