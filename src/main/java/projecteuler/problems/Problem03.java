@@ -2,7 +2,6 @@ package projecteuler.problems;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 @SuppressWarnings("ConstantConditions")
 public class Problem03 implements Problem<Integer> {
@@ -27,15 +26,7 @@ public class Problem03 implements Problem<Integer> {
     }
     
     private static int smallestPrimeFactorOf(long value) {
-        return primes().filter(i -> value % i == 0).findFirst().getAsInt();
-    }
-    
-    private static IntStream primes() {
-        return naturalNumbers().filter(i -> IntStream.range(2, i).allMatch(e -> i % e != 0));
-    }
-    
-    private static IntStream naturalNumbers() {
-        return IntStream.iterate(2, i -> i + 1);
+        return Common.primes().filter(i -> value % i == 0).findFirst().getAsInt();
     }
     
     @Override

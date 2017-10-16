@@ -1,10 +1,11 @@
 package projecteuler.problems;
 
+@SuppressWarnings("ConstantConditions")
 public class Problem07 implements Problem<Integer> {
     
     @Override
     public Integer getCalculatedSolution() {
-        return null;
+        return Common.primes().skip(10000).findFirst().getAsInt();
     }
     
     @Override
