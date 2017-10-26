@@ -26,13 +26,13 @@ public class Problem21 implements Problem<Integer> {
     }
     
     // Beautiful, even if Java. 
-    private static <K, V> Function<K, V> memoized(Function<K, V> function) {
+    public static <K, V> Function<K, V> memoized(Function<K, V> function) {
         Map<K, V> cache = new HashMap<>();
         
         return argument -> cache.computeIfAbsent(argument, function);
     }
     
-    private static int sumOfproperDivisors(int number) {
+    public static int sumOfproperDivisors(int number) {
         return IntStream.range(1, number).filter(i -> number % i == 0).sum();
     }
     
