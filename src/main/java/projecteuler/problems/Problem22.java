@@ -4,7 +4,6 @@ package projecteuler.problems;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 public class Problem22 implements Problem<Long> {
@@ -20,7 +19,7 @@ public class Problem22 implements Problem<Long> {
     }
     
     private static int scoreForWord(int index, String word) {
-        return index * Arrays.stream(word.split("")).mapToInt(c -> c.charAt(0) - 'A' + 1).sum();
+        return index * word.chars().map(c -> c - 'A' + 1).sum();
     }
     
     private static Stream<String> readFile(String filename) {
