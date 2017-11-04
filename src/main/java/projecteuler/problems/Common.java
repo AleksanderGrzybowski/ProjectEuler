@@ -7,8 +7,19 @@ public class Common {
         return naturalNumbers().filter(Common::isPrime);
     }
     
-    public static boolean isPrime(int i) {
-        return i >= 2 && IntStream.rangeClosed(2, (int) Math.sqrt(i)).allMatch(e -> i % e != 0);
+    /**
+     * Handwritten, streams are too slow.
+     * return number >= 2 && IntStream.rangeClosed(2, (int) Math.sqrt(number)).allMatch(e -> number % e != 0);
+     */
+    public static boolean isPrime(int number) {
+        if (number < 2) {
+            return false;
+        }
+        
+        for (int i = 2; i <= (int) Math.sqrt(number); ++i) {
+            if (number % i == 0) return false;
+        }
+        return true;
     }
     
     private static IntStream naturalNumbers() {
