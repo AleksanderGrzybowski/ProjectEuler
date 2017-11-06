@@ -13,7 +13,7 @@ public class Problem03 implements Problem<Integer> {
                 .get();
     }
     
-    private List<Integer> factorize(long number) {
+    static List<Integer> factorize(long number) {
         List<Integer> factors = new ArrayList<>();
         
         while (number != 1) {
