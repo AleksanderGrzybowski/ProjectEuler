@@ -22,7 +22,7 @@ public class Problem32 implements Problem<Integer> {
                 .sum();
     }
     
-    private boolean isPandigital(String number) {
+    static boolean isPandigital(String number) {
         return number.length() == 9 && Arrays.stream(number.split("")).collect(toSet()).equals(PANDIGITAL_SET);
     }
     
