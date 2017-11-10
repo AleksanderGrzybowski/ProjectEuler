@@ -2,7 +2,7 @@ package projecteuler.problems;
 
 import java.util.stream.LongStream;
 
-import static projecteuler.problems.Problem32.isPandigital;
+import static projecteuler.problems.Problem32.isPandigital1To9;
 
 @SuppressWarnings("ConstantConditions")
 public class Problem38 implements Problem<Long> {
@@ -24,7 +24,7 @@ public class Problem38 implements Problem<Long> {
             number += Long.toString(base * n);
         }
         
-        return isPandigital(number) ? LongStream.of(Long.parseLong(number)) : LongStream.empty();
+        return isPandigital1To9(number) ? LongStream.of(Long.parseLong(number)) : LongStream.empty();
     }
     
     @Override

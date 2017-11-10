@@ -2,8 +2,8 @@ package projecteuler.problems;
 
 import java.util.stream.IntStream;
 
-public class Common {
-    public static IntStream primes() {
+class Common {
+    static IntStream primes() {
         return naturalNumbers().filter(Common::isPrime);
     }
     
@@ -11,7 +11,7 @@ public class Common {
      * Handwritten, streams are too slow.
      * return number >= 2 && IntStream.rangeClosed(2, (int) Math.sqrt(number)).allMatch(e -> number % e != 0);
      */
-    public static boolean isPrime(int number) {
+    static boolean isPrime(int number) {
         if (number < 2) {
             return false;
         }
