@@ -22,7 +22,7 @@ public class Problem22 implements Problem<Long> {
         return index * word.chars().map(c -> c - 'A' + 1).sum();
     }
     
-    private static Stream<String> readFile(String filename) {
+    static Stream<String> readFile(String filename) {
         try {
             return Files.lines(new File(filename).toPath());
         } catch (IOException e) {

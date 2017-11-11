@@ -23,7 +23,7 @@ public class Problem10 implements Problem<Long> {
     // https://stackoverflow.com/a/26919665
     // Ugly but works
     // Refactor this on Java 9
-    private <T> Stream<T> takeWhile(Stream<T> stream, Predicate<T> predicate) {
+    static <T> Stream<T> takeWhile(Stream<T> stream, Predicate<T> predicate) {
         List<T> result = new ArrayList<>();
         
         stream.peek(e -> {
