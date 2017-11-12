@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
-import static projecteuler.problems.Problem21.memoized;
+import static projecteuler.problems.Common.memoized;
 
 @SuppressWarnings("ConstantConditions")
 public class Problem27 implements Problem<Integer> {

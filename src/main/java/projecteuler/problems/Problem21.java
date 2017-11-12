@@ -1,13 +1,11 @@
 package projecteuler.problems;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
 public class Problem21 implements Problem<Integer> {
     
-    private static final Function<Integer, Integer> D = memoized(Problem21::sumOfproperDivisors);
+    private static final Function<Integer, Integer> D = Common.memoized(Problem21::sumOfproperDivisors);
     
     @Override
     public Integer getCalculatedSolution() {
@@ -25,14 +23,7 @@ public class Problem21 implements Problem<Integer> {
         return sum;
     }
     
-    // Beautiful, even if Java. 
-    public static <K, V> Function<K, V> memoized(Function<K, V> function) {
-        Map<K, V> cache = new HashMap<>();
-        
-        return argument -> cache.computeIfAbsent(argument, function);
-    }
-    
-    public static int sumOfproperDivisors(int number) {
+    static int sumOfproperDivisors(int number) {
         return IntStream.range(1, number).filter(i -> number % i == 0).sum();
     }
     

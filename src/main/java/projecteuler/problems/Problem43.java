@@ -4,7 +4,7 @@ public class Problem43 implements Problem<Long> {
     
     @Override
     public Long getCalculatedSolution() {
-        return Problem24.permutations("0123456789")
+        return Common.permutations("0123456789")
                 .stream()
                 .filter(i -> matches(i, 1, 4, 2) &&
                         matches(i, 2, 5, 3) &&

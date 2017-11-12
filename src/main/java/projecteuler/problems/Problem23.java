@@ -5,7 +5,7 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toSet;
-import static projecteuler.problems.Problem21.memoized;
+import static projecteuler.problems.Common.memoized;
 
 public class Problem23 implements Problem<Integer> {
     

@@ -2,7 +2,7 @@ package projecteuler.problems;
 
 import java.util.stream.LongStream;
 
-import static projecteuler.problems.Problem32.isPandigital1To9;
+import static projecteuler.problems.Common.isPandigital1To9;
 
 @SuppressWarnings("ConstantConditions")
 public class Problem38 implements Problem<Long> {

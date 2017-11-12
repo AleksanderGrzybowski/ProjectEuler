@@ -14,10 +14,10 @@ public class Problem42 implements Problem<Integer> {
     
     @Override
     public Integer getCalculatedSolution() {
-        List<String> words = Problem22.readFile("files/42.txt").collect(toList());
+        List<String> words = Common.readFile("files/42.txt").collect(toList());
         int maxWordValue = words.stream().map(Problem42::wordValue).max(Integer::compareTo).get();
         
-        TRIANGLE_NUMBERS = Problem10.takeWhile(
+        TRIANGLE_NUMBERS = Common.takeWhile(
                 IntStream.iterate(1, i -> i + 1).map(i -> i * (i + 1) / 2).boxed(),
                 i -> i <= maxWordValue
         ).collect(toSet());

@@ -38,8 +38,8 @@ public class Problem33 implements Problem<Integer> {
         Fraction toLowestCommonTerms() {
             if (this.numerator == 0) return ZERO;
             
-            List<Integer> numeratorFactors = Problem03.factorize(numerator);
-            List<Integer> denominatorFactors = Problem03.factorize(denominator);
+            List<Integer> numeratorFactors = Common.factorize(numerator);
+            List<Integer> denominatorFactors = Common.factorize(denominator);
             
             Optional<Integer> maybeCommonElement = findCommonElementAndRemoveIfPresent(numeratorFactors, denominatorFactors);
             
