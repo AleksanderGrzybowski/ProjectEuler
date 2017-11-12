@@ -20,7 +20,7 @@ public class Problem24 implements Problem<Long> {
         );
     }
     
-    private static List<String> permutations(String number) {
+    static List<String> permutations(String number) {
         return number.length() == 1 ? (
                 singletonList(number)
         ) : (
