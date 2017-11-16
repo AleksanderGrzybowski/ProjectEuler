@@ -35,7 +35,7 @@ class Common {
         return true;
     }
     
-    private static IntStream naturalNumbers() {
+    static IntStream naturalNumbers() {
         return IntStream.iterate(2, i -> i + 1);
     }
     
