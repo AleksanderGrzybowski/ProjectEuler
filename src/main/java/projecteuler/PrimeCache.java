@@ -35,7 +35,7 @@ public class PrimeCache {
         }
     }
     
-    private boolean isPrime(int number) {
+    public boolean isPrime(int number) {
         ensureCapacity(number);
         
         return sieve[number] != 0;
