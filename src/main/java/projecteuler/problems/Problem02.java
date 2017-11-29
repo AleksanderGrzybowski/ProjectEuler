@@ -2,37 +2,41 @@ package projecteuler.problems;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.IntPredicate;
+
+import static java.util.Arrays.asList;
 
 public class Problem02 implements Problem<Integer> {
     
-    private static final IntPredicate IS_EVEN = i -> i % 2 == 0;
+    private static final int LIMIT = 4_000_000;
     
     @Override
     public Integer getCalculatedSolution() {
-        return fibonacciUpTo(4_000_000).stream()
+        return fibonacciUpTo(LIMIT).stream()
                 .mapToInt(e -> e)
-                .filter(IS_EVEN)
+                .filter(Problem02::isEven)
                 .sum();
     }
     
-    private List<Integer> fibonacciUpTo(int limit) {
-        List<Integer> elements = new ArrayList<>();
+    private static List<Integer> fibonacciUpTo(int limit) {
+        List<Integer> fibonacciElements = new ArrayList<>();
         
         int a = 1;
         int b = 2;
         
-        elements.add(a);
-        elements.add(b);
+        fibonacciElements.addAll(asList(a, b));
         
         while (b <= limit) {
-            int temp = b;
+            int previous = b;
             b = a + b;
-            a = temp;
-            elements.add(b);
+            a = previous;
+            fibonacciElements.add(b);
         }
         
-        return elements;
+        return fibonacciElements;
+    }
+    
+    private static boolean isEven(int number) {
+        return number % 2 == 0;
     }
     
     @Override

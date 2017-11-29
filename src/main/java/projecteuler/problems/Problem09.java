@@ -6,17 +6,21 @@ public class Problem09 implements Problem<Integer> {
     
     @Override
     public Integer getCalculatedSolution() {
-        for (int i = 1; i <= SUM; ++i) {
-            for (int j = i; j <= SUM; ++j) {
-                int k = SUM - j - i;
+        for (int a = 1; a <= SUM; ++a) {
+            for (int b = a; b <= SUM; ++b) {
+                int c = SUM - b - a;
                 
-                if (i * i + j * j == k * k) {
-                    return i * j * k;
+                if (isPythagoreanTriplet(a, b, c)) {
+                    return a * b * c;
                 }
             }
         }
         
         throw new AssertionError();
+    }
+    
+    private static boolean isPythagoreanTriplet(int a, int b, int c) {
+        return a * a + b * b == c * c;
     }
     
     @Override

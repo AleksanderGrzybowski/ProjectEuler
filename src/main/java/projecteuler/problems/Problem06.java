@@ -6,14 +6,14 @@ public class Problem06 implements Problem<Integer> {
     
     @Override
     public Integer getCalculatedSolution() {
-        return square(range().sum()) - range().map(this::square).sum();
+        return square(range().sum()) - range().map(Problem06::square).sum();
     }
     
-    private IntStream range() {
+    private static IntStream range() {
         return IntStream.rangeClosed(1, 100);
     }
     
-    private int square(int number) {
+    private static int square(int number) {
         return number * number;
     }
     

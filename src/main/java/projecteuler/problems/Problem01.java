@@ -7,9 +7,13 @@ public class Problem01 implements Problem<Integer> {
     
     @Override
     public Integer getCalculatedSolution() {
-        return IntStream.range(1, 1000)
+        return givenRange()
                 .filter(isMultipleOf(3).or(isMultipleOf(5)))
                 .sum();
+    }
+    
+    private IntStream givenRange() {
+        return IntStream.range(1, 1000);
     }
     
     private IntPredicate isMultipleOf(int factor) {

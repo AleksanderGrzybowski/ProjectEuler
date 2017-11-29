@@ -1,27 +1,32 @@
 package projecteuler.problems;
 
-import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
 @SuppressWarnings("ConstantConditions")
 public class Problem04 implements Problem<Integer> {
     
-    private static final IntPredicate IS_PALINDROMIC = i -> {
-        String numberString = "" + i;
-        return numberString.equals(new StringBuilder(numberString).reverse().toString());
-    };
+    private static final int THREE_DIGIT_MIN = 100;
+    private static final int THREE_DIGIT_MAX = 999;
     
     @Override
     public Integer getCalculatedSolution() {
-        return products()
-                .filter(IS_PALINDROMIC)
+        return productsOf3DigitNumbers()
+                .filter(Problem04::isPalindromic)
                 .max().getAsInt();
     }
     
-    private IntStream products() {
-        return IntStream.rangeClosed(100, 999).flatMap(
-                first -> IntStream.rangeClosed(100, 999).map(second -> first * second)
+    private static IntStream productsOf3DigitNumbers() {
+        return threeDigitNumbers().flatMap(
+                first -> threeDigitNumbers().map(second -> first * second)
         );
+    }
+    
+    private static IntStream threeDigitNumbers() {
+        return IntStream.rangeClosed(THREE_DIGIT_MIN, THREE_DIGIT_MAX);
+    }
+    
+    private static boolean isPalindromic(int number) {
+        return Integer.parseInt(new StringBuilder("" + number).reverse().toString()) == number;
     }
     
     @Override

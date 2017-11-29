@@ -1,18 +1,22 @@
 package projecteuler.problems;
 
-import static projecteuler.problems.Common.primes;
+import projecteuler.PrimeCache;
 
-@SuppressWarnings("ResultOfMethodCallIgnored")
+import static projecteuler.problems.Common.takeWhile;
+
 public class Problem10 implements Problem<Long> {
+    
+    private static final int LIMIT = 2_000_000;
     
     @Override
     public Long getCalculatedSolution() {
-        return Common.takeWhile(primes().boxed(), i -> i < 2_000_000).mapToLong(e -> e).sum();
+        return takeWhile(PrimeCache.INSTANCE.primes().boxed(), i -> i < LIMIT)
+                .mapToLong(e -> e)
+                .sum();
     }
     
     @Override
     public Long getExpectedSolution() {
         return 142913828922L;
     }
-    
 }

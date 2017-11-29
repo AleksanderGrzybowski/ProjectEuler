@@ -1,5 +1,7 @@
 package projecteuler.problems;
 
+import projecteuler.PrimeCache;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -66,7 +68,7 @@ class Common {
     
     @SuppressWarnings("ConstantConditions")
     private static int smallestPrimeFactorOf(long value) {
-        return primes().filter(i -> value % i == 0).findFirst().getAsInt();
+        return PrimeCache.INSTANCE.primes().filter(i -> value % i == 0).findFirst().getAsInt();
     }
     
     static List<Integer> factorize(long number) {

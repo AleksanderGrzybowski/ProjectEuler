@@ -6,19 +6,27 @@ import java.util.stream.IntStream;
 @SuppressWarnings("ConstantConditions")
 public class Problem05 implements Problem<Integer> {
     
-    // functional madness
-    private static final IntPredicate IS_DIVISIBLE_1_THROUGH_20 = IntStream
-            .of(11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
-            .mapToObj(divisor -> (IntPredicate) candidate -> candidate % divisor == 0)
-            .reduce(IntPredicate::and)
-            .get();
-    
     @Override
     public Integer getCalculatedSolution() {
-        return IntStream.iterate(20, i -> i + 20) // divisible by 20, so let's go up by 20
+        int step = divisors().max().getAsInt();
+        
+        return IntStream.iterate(step, i -> i + step) // let's go up by the biggest possible divisor
                 .parallel()
-                .filter(IS_DIVISIBLE_1_THROUGH_20)
+                .filter(isDivisibleThrough1To20())
                 .findFirst().getAsInt();
+    }
+    
+    // functional madness
+    private static IntPredicate isDivisibleThrough1To20() {
+        return divisors()
+                .mapToObj(divisor -> (IntPredicate) candidate -> candidate % divisor == 0)
+                .reduce(IntPredicate::and)
+                .get();
+    }
+    
+    // smaller ones are all covered by bigger ones
+    private static IntStream divisors() {
+        return IntStream.rangeClosed(11, 20);
     }
     
     @Override

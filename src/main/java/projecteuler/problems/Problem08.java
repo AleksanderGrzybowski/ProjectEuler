@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 @SuppressWarnings("ConstantConditions")
 public class Problem08 implements Problem<BigDecimal> {
     
-    private static final int LENGTH = 13;
+    private static final int ADJACENT_LENGTH = 13;
     
     private static final String NUMBER = "73167176531330624919225119674426574742355349194934" +
             "96983520312774506326239578318016984801869478851843" +
@@ -34,20 +34,20 @@ public class Problem08 implements Problem<BigDecimal> {
     @Override
     public BigDecimal getCalculatedSolution() {
         return createSplits()
-                .map(this::productOfDigits)
+                .map(Problem08::productOfDigits)
                 .max(BigDecimal::compareTo)
                 .get();
     }
     
-    private BigDecimal productOfDigits(String number) {
+    private static BigDecimal productOfDigits(String number) {
         return Arrays.stream(number.split(""))
                 .map(BigDecimal::new)
                 .reduce(BigDecimal.ONE, BigDecimal::multiply);
     }
     
-    private Stream<String> createSplits() {
-        return IntStream.rangeClosed(0, NUMBER.length() - LENGTH)
-                .mapToObj(i -> NUMBER.substring(i, i + LENGTH));
+    private static Stream<String> createSplits() {
+        return IntStream.rangeClosed(0, NUMBER.length() - ADJACENT_LENGTH)
+                .mapToObj(i -> NUMBER.substring(i, i + ADJACENT_LENGTH));
     }
     
     @Override

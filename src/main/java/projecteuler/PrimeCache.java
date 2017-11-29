@@ -50,7 +50,7 @@ public class PrimeCache {
         }
     }
     
-    IntStream primes() {
+    public IntStream primes() {
         return IntStream.iterate(2, i -> i + 1).filter(this::isPrime);
     }
     
