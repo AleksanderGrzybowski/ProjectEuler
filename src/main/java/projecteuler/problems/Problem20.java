@@ -9,14 +9,17 @@ public class Problem20 implements Problem<Integer> {
     @Override
     public Integer getCalculatedSolution() {
         return Arrays.stream(
-                IntStream.rangeClosed(1, 100)
+                range()
                         .mapToObj(BigInteger::valueOf)
                         .reduce(BigInteger.ONE, BigInteger::multiply)
                         .toString().split("")
         )
                 .mapToInt(Integer::parseInt)
                 .sum();
-        
+    }
+    
+    private static IntStream range() {
+        return IntStream.rangeClosed(1, 100);
     }
     
     @Override

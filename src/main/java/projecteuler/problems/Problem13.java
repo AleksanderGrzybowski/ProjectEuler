@@ -1,12 +1,13 @@
 package projecteuler.problems;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
+
+import static java.util.Arrays.asList;
 
 public class Problem13 implements Problem<String> {
     
-    private static final List<String> NUMBERS = Arrays.asList(
+    private static final List<String> NUMBERS = asList(
             "37107287533902102798797998220837590246510135740250",
             "46376937677490009712648124896970078050417018260538",
             "74324986199524741059474233309513058123726617309629",
@@ -109,13 +110,15 @@ public class Problem13 implements Problem<String> {
             "53503534226472524250874054075591789781264330331690"
     );
     
+    private static final int RESULT_LENGTH = 10;
+    
     @Override
     public String getCalculatedSolution() {
         return NUMBERS.stream()
                 .map(BigDecimal::new)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
-                .toString().substring(0, 10);
-        
+                .toString()
+                .substring(0, RESULT_LENGTH);
     }
     
     @Override

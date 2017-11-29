@@ -66,9 +66,13 @@ public class Problem11 implements Problem<Integer> {
         }
         
         return sequences.stream()
-                .map(sequence -> sequence.stream().reduce(1, (a, b) -> a * b))
+                .map(Problem11::product)
                 .max(Integer::compare)
                 .get();
+    }
+    
+    private static Integer product(List<Integer> sequence) {
+        return sequence.stream().reduce(1, (a, b) -> a * b);
     }
     
     @Override

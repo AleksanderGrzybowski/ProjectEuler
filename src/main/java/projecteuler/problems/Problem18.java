@@ -1,9 +1,11 @@
 package projecteuler.problems;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import static java.util.Collections.singletonList;
+import static java.util.stream.Collectors.toList;
 
 @SuppressWarnings("ConstantConditions")
 public class Problem18 implements Problem<Integer> {
@@ -26,6 +28,14 @@ public class Problem18 implements Problem<Integer> {
             {4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23},
     };
     
+    @Override
+    public Integer getCalculatedSolution() {
+        return traverse(0, 0, 0).stream()
+                .mapToInt(i -> i)
+                .max()
+                .getAsInt();
+    }
+    
     private List<Integer> traverse(int i, int j, int walkingSum) {
         return i == (TRIANGLE.length - 1) ? (
                 singletonList(TRIANGLE[i][j] + walkingSum)
@@ -35,16 +45,9 @@ public class Problem18 implements Problem<Integer> {
         );
     }
     
-    private List<Integer> combine(List<Integer> first, List<Integer> second) {
-        List<Integer> combined = new ArrayList<>();
-        combined.addAll(first);
-        combined.addAll(second);
-        return combined;
-    }
-    
-    @Override
-    public Integer getCalculatedSolution() {
-        return traverse(0, 0, 0).stream().mapToInt(i -> i).max().getAsInt();
+    @SafeVarargs
+    private static List<Integer> combine(List<Integer>... lists) {
+        return Arrays.stream(lists).flatMap(Collection::stream).collect(toList());
     }
     
     @Override

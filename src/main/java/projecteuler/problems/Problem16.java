@@ -5,9 +5,11 @@ import java.util.Arrays;
 
 public class Problem16 implements Problem<Integer> {
     
+    private static final BigDecimal NUMBER = BigDecimal.valueOf(2).pow(1000);
+    
     @Override
     public Integer getCalculatedSolution() {
-        return Arrays.stream(BigDecimal.valueOf(2).pow(1000).toString().split(""))
+        return Arrays.stream(NUMBER.toString().split(""))
                 .mapToInt(Integer::valueOf)
                 .sum();
     }

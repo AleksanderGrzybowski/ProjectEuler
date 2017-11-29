@@ -38,10 +38,6 @@ public class Problem17 implements Problem<Integer> {
         words.put(90, "ninety");
         words.put(1000, "one thousand");
         
-        for (int hundredsDigit = 1; hundredsDigit <= 9; ++hundredsDigit) {
-            words.put(100 * hundredsDigit, words.get(hundredsDigit) + " hundred");
-        }
-        
         for (int tensDigit = 2; tensDigit <= 9; ++tensDigit) {
             for (int onesDigit = 1; onesDigit <= 9; ++onesDigit) {
                 words.put(10 * tensDigit + onesDigit, words.get(tensDigit * 10) + "-" + words.get(onesDigit));
@@ -49,18 +45,24 @@ public class Problem17 implements Problem<Integer> {
         }
         
         for (int hundredsDigit = 1; hundredsDigit <= 9; ++hundredsDigit) {
+            words.put(100 * hundredsDigit, words.get(hundredsDigit) + " hundred");
+            
             for (int tensPart = 1; tensPart <= 99; ++tensPart) {
                 words.put(100 * hundredsDigit + tensPart, words.get(100 * hundredsDigit) + " and " + words.get(tensPart));
             }
         }
         
-        return words.entrySet().stream()
-                .mapToInt(entry -> removeSpacesAndHypens(entry).length())
+        return words.values().stream()
+                .mapToInt(Problem17::wordLength)
                 .sum();
     }
     
-    private static String removeSpacesAndHypens(Map.Entry<Integer, String> entry) {
-        return entry.getValue().replace(" ", "").replace("-", "");
+    private static int wordLength(String word) {
+        return withRemovedSpacesAndHypens(word).length();
+    }
+    
+    private static String withRemovedSpacesAndHypens(String word) {
+        return word.replace(" ", "").replace("-", "");
     }
     
     @Override
