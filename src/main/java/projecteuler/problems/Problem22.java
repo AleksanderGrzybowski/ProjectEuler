@@ -3,11 +3,13 @@ package projecteuler.problems;
 
 public class Problem22 implements Problem<Long> {
     
+    private static final String WORDS_FILENAME = "files/22.txt";
+    
     @Override
     public Long getCalculatedSolution() {
         int[] index = {0};
         
-        return Common.readFile("files/22.txt")
+        return Common.readFile(WORDS_FILENAME)
                 .sorted()
                 .mapToLong(line -> scoreForWord(++index[0], line))
                 .sum();

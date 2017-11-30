@@ -8,21 +8,25 @@ import java.util.stream.IntStream;
 @SuppressWarnings("ConstantConditions")
 public class Problem26 implements Problem<Integer> {
     
+    private static final int MAX_D = 1000;
+    
     @Override
     public Integer getCalculatedSolution() {
-        return IntStream.range(2, 1000).boxed().max(Comparator.comparing(Problem26::lengthOfCycle)).get();
+        return IntStream.range(2, MAX_D).boxed()
+                .max(Comparator.comparing(Problem26::lengthOfCycle))
+                .get();
     }
     
-    private static int lengthOfCycle(int b) {
-        Set<Integer> numbers = new HashSet<>();
-        int a = 10;
+    private static int lengthOfCycle(int divisor) {
+        Set<Integer> digitsInFractionalRepresentation = new HashSet<>();
+        int dividend = 10;
         
-        while (!numbers.contains(a)) {
-            numbers.add(a);
-            a = (a % b) * 10;
+        while (!digitsInFractionalRepresentation.contains(dividend)) {
+            digitsInFractionalRepresentation.add(dividend);
+            dividend = (dividend % divisor) * 10;
         }
         
-        return numbers.size();
+        return digitsInFractionalRepresentation.size();
     }
     
     @Override

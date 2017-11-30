@@ -1,18 +1,18 @@
 package projecteuler.problems;
 
 import java.util.function.Function;
-import java.util.stream.IntStream;
 
 public class Problem21 implements Problem<Integer> {
     
-    private static final Function<Integer, Integer> D = Common.memoized(Problem21::sumOfproperDivisors);
+    private static final Function<Integer, Integer> D = Common.memoized(Common::sumOfproperDivisors);
+    private static final int MAX = 10000;
     
     @Override
     public Integer getCalculatedSolution() {
         int sum = 0;
         
-        for (int a = 0; a < 10000; a++) {
-            for (int b = 0; b < 10000; b++) {
+        for (int a = 0; a < MAX; a++) {
+            for (int b = 0; b < MAX; b++) {
                 if (a == b) break;
                 if (D.apply(a) == b && D.apply(b) == a) {
                     sum += a + b;
@@ -21,10 +21,6 @@ public class Problem21 implements Problem<Integer> {
         }
         
         return sum;
-    }
-    
-    static int sumOfproperDivisors(int number) {
-        return IntStream.range(1, number).filter(i -> number % i == 0).sum();
     }
     
     @Override

@@ -3,22 +3,22 @@ package projecteuler.problems;
 import java.math.BigInteger;
 import java.util.stream.IntStream;
 
-public class Problem29 implements Problem<Integer> {
+public class Problem29 implements Problem<Long> {
     
     @Override
-    public Integer getCalculatedSolution() {
-        return (int) range().mapToObj(BigInteger::valueOf)
+    public Long getCalculatedSolution() {
+        return range().mapToObj(BigInteger::valueOf)
                 .flatMap(a -> range().mapToObj(a::pow))
                 .distinct()
                 .count();
     }
     
-    private IntStream range() {
+    private static IntStream range() {
         return IntStream.rangeClosed(2, 100);
     }
     
     @Override
-    public Integer getExpectedSolution() {
-        return 9183;
+    public Long getExpectedSolution() {
+        return 9183L;
     }
 }

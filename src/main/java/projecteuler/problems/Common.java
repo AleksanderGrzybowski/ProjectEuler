@@ -106,4 +106,8 @@ class Common {
         
         return result.stream(); // yea, fake crap
     }
+    
+    static int sumOfproperDivisors(int number) {
+        return IntStream.range(1, number).filter(maybeDivisor -> number % maybeDivisor == 0).sum();
+    }
 }

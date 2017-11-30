@@ -7,12 +7,17 @@ import java.util.stream.Stream;
 @SuppressWarnings("ConstantConditions")
 public class Problem25 implements Problem<Integer> {
     
+    private static final int DIGIT_COUNT = 1000;
+    
     @Override
     public Integer getCalculatedSolution() {
-        return fibbonacci().filter(f -> f.value.toString().length() == 1000).findFirst().get().index;
+        return fibbonacci()
+                .filter(number -> number.value.toString().length() == DIGIT_COUNT)
+                .findFirst().get()
+                .index;
     }
     
-    private Stream<WithIndex> fibbonacci() {
+    private static Stream<WithIndex> fibbonacci() {
         return Stream.generate(new Supplier<WithIndex>() {
             
             private BigInteger a = BigInteger.ONE;

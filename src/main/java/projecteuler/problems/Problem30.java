@@ -4,9 +4,11 @@ import java.util.stream.IntStream;
 
 public class Problem30 implements Problem<Integer> {
     
+    private static final int LIMIT = 1000000;
+    
     @Override
     public Integer getCalculatedSolution() {
-        return IntStream.range(2, 1000000).parallel()
+        return IntStream.range(2, LIMIT).parallel()
                 .filter(Problem30::canBeWrittenAsSumOfFifthPowers)
                 .sum();
     }

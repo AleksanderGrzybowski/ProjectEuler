@@ -4,9 +4,11 @@ import java.util.stream.IntStream;
 
 public class Problem28 implements Problem<Integer> {
     
+    private static final int SIZE = 1001;
+    
     @Override
     public Integer getCalculatedSolution() {
-        return new Spiral(1001).diagonalSum();
+        return new Spiral(SIZE).diagonalSum();
     }
     
     private static class Spiral {
@@ -14,7 +16,7 @@ public class Problem28 implements Problem<Integer> {
         private int[][] spiral;
         
         Spiral(int size) {
-            // boudary made with '0'-s
+            // borders made with '0'-s
             spiral = new int[size + 2][size + 2];
             
             int currentNumber = 1;
