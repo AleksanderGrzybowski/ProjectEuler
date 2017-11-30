@@ -4,14 +4,15 @@ import java.util.stream.IntStream;
 
 public class Problem34 implements Problem<Integer> {
     
-    private static final int MAX = 50000;
-    private static final int MIN = 3;
-    
     @Override
     public Integer getCalculatedSolution() {
-        return IntStream.rangeClosed(MIN, MAX)
+        return range()
                 .filter(Problem34::isCurious)
                 .sum();
+    }
+    
+    private static IntStream range() {
+        return IntStream.rangeClosed(3, 50000);
     }
     
     private static boolean isCurious(int number) {

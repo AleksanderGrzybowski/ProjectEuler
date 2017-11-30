@@ -3,14 +3,20 @@ package projecteuler.problems;
 import java.util.*;
 import java.util.stream.IntStream;
 
+import static java.util.Arrays.asList;
+
 @SuppressWarnings("ConstantConditions")
 public class Problem39 implements Problem<Integer> {
     
+    private static final int MAX_PERIMETER = 1000;
+    private static final int MIN_PERIMETER = 3;
+    
     @Override
     public Integer getCalculatedSolution() {
-        return IntStream.rangeClosed(3, 1000)
+        return IntStream.rangeClosed(MIN_PERIMETER, MAX_PERIMETER)
                 .parallel().boxed()
-                .max(Comparator.comparing(Problem39::numberOfSolutionsForPerimeter)).get();
+                .max(Comparator.comparing(Problem39::numberOfSolutionsForPerimeter))
+                .get();
     }
     
     private static int numberOfSolutionsForPerimeter(int perimeter) {
@@ -21,7 +27,7 @@ public class Problem39 implements Problem<Integer> {
         for (int a = 1; a <= perimeter - 2; ++a) {
             for (int b = 1; b <= perimeter - a - 1; ++b) {
                 int c = perimeter - a - b;
-                List<Integer> triangle = new ArrayList<>(Arrays.asList(a, b, c));
+                List<Integer> triangle = new ArrayList<>(asList(a, b, c));
                 triangle.sort(Comparator.naturalOrder());
                 
                 if (isASquareTriangle(triangle)) {

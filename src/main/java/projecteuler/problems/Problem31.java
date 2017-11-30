@@ -1,5 +1,7 @@
 package projecteuler.problems;
 
+import lombok.Data;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,31 +44,9 @@ public class Problem31 implements Problem<Integer> {
         return possibilities.size();
     }
     
+    @Data
     private static class CoinCount {
         final int coin, count;
-        
-        CoinCount(int coin, int count) {
-            this.coin = coin;
-            this.count = count;
-        }
-        
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            
-            CoinCount coinCount = (CoinCount) o;
-            
-            if (coin != coinCount.coin) return false;
-            return count == coinCount.count;
-        }
-        
-        @Override
-        public int hashCode() {
-            int result = coin;
-            result = 31 * result + count;
-            return result;
-        }
     }
     
     @Override

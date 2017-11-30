@@ -19,7 +19,7 @@ public class Problem40 implements Problem<Integer> {
                 .reduce(1, (a, b) -> a * b);
     }
     
-    private IntStream powersOfTen(int max) {
+    private static IntStream powersOfTen(int max) {
         return IntStream.rangeClosed(0, max - 1).map(i -> (int) Math.pow(10, i));
     }
     

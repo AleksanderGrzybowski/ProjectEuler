@@ -1,6 +1,7 @@
 package projecteuler.problems;
 
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Problem36 implements Problem<Integer> {
     
@@ -14,7 +15,7 @@ public class Problem36 implements Problem<Integer> {
     }
     
     private static boolean isPalindromicInBase10And2(int number) {
-        return isPalindromic(Integer.toString(number)) && isPalindromic(Integer.toString(number, 2));
+        return Stream.of(10, 2).allMatch(base -> isPalindromic(Integer.toString(number, base)));
     }
     
     private static boolean isPalindromic(String number) {

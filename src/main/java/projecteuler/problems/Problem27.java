@@ -1,5 +1,6 @@
 package projecteuler.problems;
 
+import lombok.Data;
 import projecteuler.PrimeCache;
 
 import java.util.Comparator;
@@ -35,13 +36,9 @@ public class Problem27 implements Problem<Integer> {
     }
     
     
+    @Data
     private static class Pair {
         final int a, b;
-        
-        private Pair(int a, int b) {
-            this.a = a;
-            this.b = b;
-        }
     }
     
     @Override

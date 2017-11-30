@@ -1,5 +1,7 @@
 package projecteuler.problems;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +17,8 @@ public class Problem33 implements Problem<Integer> {
     public Integer getCalculatedSolution() {
         ArrayList<Fraction> curiousFractions = new ArrayList<>();
         
-        return range().flatMap(i -> range().map(j -> new Fraction(i, j)))
+        return range()
+                .flatMap(i -> range().map(j -> new Fraction(i, j)))
                 .filter(Fraction::isCurious)
                 .reduce(Fraction::multiply).get()
                 .denominator;
@@ -25,18 +28,17 @@ public class Problem33 implements Problem<Integer> {
         return IntStream.rangeClosed(10, 99).boxed();
     }
     
+    @SuppressWarnings("SimplifiableIfStatement")
+    @Data
     private static class Fraction {
         private static final Fraction ZERO = new Fraction(0, 1);
         
         final int numerator, denominator;
         
-        Fraction(int numerator, int denominator) {
-            this.numerator = numerator;
-            this.denominator = denominator;
-        }
-    
-        Fraction toLowestCommonTerms() {
-            if (this.numerator == 0) return ZERO;
+        private Fraction toLowestCommonTerms() {
+            if (this.numerator == 0) {
+                return ZERO;
+            }
             
             List<Integer> numeratorFactors = Common.factorize(numerator);
             List<Integer> denominatorFactors = Common.factorize(denominator);
@@ -71,8 +73,24 @@ public class Problem33 implements Problem<Integer> {
             }
         }
         
-        Fraction multiply(Fraction other) {
+        private Fraction multiply(Fraction other) {
             return new Fraction(this.numerator * other.numerator, this.denominator * other.denominator).toLowestCommonTerms();
+        }
+        
+        private static List<Integer> digits(int number) {
+            return new ArrayList<>(asList(number / 10, number % 10));
+        }
+        
+        private static Optional<Integer> findCommonElementAndRemoveIfPresent(List<Integer> first, List<Integer> second) {
+            Optional<Integer> maybeCommonElement = first.stream().filter(second::contains).findFirst();
+            
+            if (maybeCommonElement.isPresent()) {
+                Integer commonElement = maybeCommonElement.get();
+                first.remove(commonElement);
+                second.remove(commonElement);
+            }
+            
+            return maybeCommonElement;
         }
         
         @Override
@@ -83,22 +101,6 @@ public class Problem33 implements Problem<Integer> {
             Fraction other = ((Fraction) o).toLowestCommonTerms();
             Fraction self = this.toLowestCommonTerms();
             return other.numerator == self.numerator && other.denominator == self.denominator;
-        }
-        
-        private static List<Integer> digits(int number) {
-            return new ArrayList<>(asList(number / 10, number % 10));
-        }
-        
-        private static Optional<Integer> findCommonElementAndRemoveIfPresent(List<Integer> first, List<Integer> second) {
-            Optional<Integer> maybeCommonElement = first.stream().filter(second::contains).findFirst();
-        
-            if (maybeCommonElement.isPresent()) {
-                Integer element = maybeCommonElement.get();
-                first.remove(element);
-                second.remove(element);
-            }
-        
-            return maybeCommonElement;
         }
     }
     

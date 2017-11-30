@@ -1,42 +1,32 @@
 package projecteuler.problems;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.IntStream;
+import projecteuler.PrimeCache;
 
-import static projecteuler.problems.Common.memoized;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Problem37 implements Problem<Integer> {
     
     private static final int MIN = 10;
-    private static final int COUNT = 11;
-    private static Function<Integer, Boolean> IS_PRIME = memoized(Common::isPrime);
+    private static final int TRUNCATABLE_PRIMES_COUNT = 11;
     
     @Override
     public Integer getCalculatedSolution() {
         return IntStream.iterate(MIN, i -> i + 1)
                 .filter(Problem37::areAllTruncationsPrimes)
-                .limit(COUNT)
+                .limit(TRUNCATABLE_PRIMES_COUNT)
                 .sum();
     }
     
     private static boolean areAllTruncationsPrimes(int i) {
-        return allTruncations(Integer.toString(i)).stream().allMatch(k -> IS_PRIME.apply(k));
+        return allTruncations(Integer.toString(i)).allMatch(PrimeCache.INSTANCE::isPrime);
     }
     
-    private static List<Integer> allTruncations(String number) {
-        List<Integer> truncated = new ArrayList<>();
-        
-        for (int i = 0; i < number.length(); ++i) {
-            truncated.add(Integer.valueOf(number.substring(i, number.length())));
-        }
-        
-        for (int i = number.length() - 1; i > 0; --i) {
-            truncated.add(Integer.valueOf(number.substring(0, i)));
-        }
-        
-        return truncated;
+    private static Stream<Integer> allTruncations(String number) {
+        return Stream.concat(
+                IntStream.range(0, number.length()).map(i -> Integer.valueOf(number.substring(i, number.length()))).boxed(),
+                IntStream.range(1, number.length()).map(i -> Integer.valueOf(number.substring(0, i))).boxed()
+        );
     }
     
     @Override

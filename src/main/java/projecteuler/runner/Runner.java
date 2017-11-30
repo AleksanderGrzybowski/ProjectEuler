@@ -1,5 +1,6 @@
 package projecteuler.runner;
 
+import lombok.Data;
 import projecteuler.problems.Problem;
 
 import java.util.ArrayList;
@@ -52,13 +53,9 @@ public class Runner {
         return new TimedResult(result, end - start);
     }
     
+    @Data
     private static class TimedResult {
-        public final Object value;
-        public final long timeMS;
-        
-        private TimedResult(Object value, long timeMS) {
-            this.value = value;
-            this.timeMS = timeMS;
-        }
+        final Object value;
+        final long timeMS;
     }
 }

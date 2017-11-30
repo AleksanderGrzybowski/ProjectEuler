@@ -1,5 +1,7 @@
 package projecteuler.problems;
 
+import lombok.Data;
+
 import java.math.BigInteger;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -40,14 +42,10 @@ public class Problem25 implements Problem<Integer> {
         });
     }
     
+    @Data
     private static class WithIndex {
         final int index;
         final BigInteger value;
-        
-        WithIndex(int index, BigInteger value) {
-            this.index = index;
-            this.value = value;
-        }
     }
     
     @Override
