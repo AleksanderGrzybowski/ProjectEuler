@@ -1,6 +1,7 @@
 
 package projecteuler.problems;
 
+import lombok.Data;
 import projecteuler.PrimeCache;
 
 import java.util.ArrayList;
@@ -52,14 +53,9 @@ public class Problem49 implements Problem<Long> {
                         .size() == 1;
     }
     
+    @Data
     private static class Triple {
         final int i, j, k;
-        
-        Triple(int i, int j, int k) {
-            this.i = i;
-            this.j = j;
-            this.k = k;
-        }
     }
     
     @Override

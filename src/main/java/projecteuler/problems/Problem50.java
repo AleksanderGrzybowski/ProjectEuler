@@ -1,5 +1,6 @@
 package projecteuler.problems;
 
+import lombok.Data;
 import projecteuler.PrimeCache;
 
 import java.util.Comparator;
@@ -34,14 +35,10 @@ public class Problem50 implements Problem<Integer> {
         }).max(Comparator.comparing(pair -> pair.seriesLength)).get().prime;
     }
     
+    @Data
     private static class Pair {
         final int prime;
         final int seriesLength;
-        
-        private Pair(int prime, int seriesLength) {
-            this.prime = prime;
-            this.seriesLength = seriesLength;
-        }
     }
     
     @Override

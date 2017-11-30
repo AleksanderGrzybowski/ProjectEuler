@@ -1,28 +1,31 @@
 package projecteuler.problems;
 
-import java.util.function.Function;
-import java.util.stream.IntStream;
+import projecteuler.PrimeCache;
 
-import static projecteuler.problems.Common.memoized;
+import java.util.stream.IntStream;
 
 @SuppressWarnings("ConstantConditions")
 public class Problem46 implements Problem<Integer> {
     
-    private static final Function<Integer, Boolean> IS_PRIME = memoized(Common::isPrime);
-    
     @Override
     public Integer getCalculatedSolution() {
         return Common.naturalNumbers()
-                .filter(i -> i % 2 == 1 && !IS_PRIME.apply(i) && !canBeWrittenGoldbachsWay(i))
+                .filter(i -> isOdd(i) && !PrimeCache.INSTANCE.isPrime(i) && !canBeWrittenGoldbachsWay(i))
                 .findFirst()
                 .getAsInt();
     }
     
-    private boolean canBeWrittenGoldbachsWay(int n) {
-        return IntStream.range(2, n).filter(IS_PRIME::apply).anyMatch(prime -> isAPerfectSquare((n - prime) / 2));
+    private static boolean isOdd(int i) {
+        return i % 2 == 1;
     }
     
-    private boolean isAPerfectSquare(int number) {
+    private static boolean canBeWrittenGoldbachsWay(int n) {
+        return IntStream.range(2, n)
+                .filter(PrimeCache.INSTANCE::isPrime)
+                .anyMatch(prime -> isAPerfectSquare((n - prime) / 2));
+    }
+    
+    private static boolean isAPerfectSquare(int number) {
         return Math.pow((int) Math.sqrt(number), 2) == number;
     }
     

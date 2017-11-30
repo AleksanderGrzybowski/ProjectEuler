@@ -7,16 +7,16 @@ import java.util.stream.Stream;
 
 @SuppressWarnings("ConstantConditions")
 public class Problem47 implements Problem<Integer> {
-
+    
     @Override
     public Integer getCalculatedSolution() {
         return Common.naturalNumbers()
                 .filter(j ->
-                        Stream.of(j, j + 1, j + 2, j + 3).allMatch(this::has4DistinctPrimeFactors)
+                        Stream.of(j, j + 1, j + 2, j + 3).allMatch(Problem47::has4DistinctPrimeFactors)
                 ).findFirst().getAsInt();
     }
     
-    private boolean has4DistinctPrimeFactors(Integer i) {
+    private static boolean has4DistinctPrimeFactors(Integer i) {
         return new HashSet<>(PrimeCache.INSTANCE.factorize(i)).size() == 4;
     }
     

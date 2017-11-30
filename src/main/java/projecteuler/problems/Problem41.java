@@ -1,5 +1,7 @@
 package projecteuler.problems;
 
+import projecteuler.PrimeCache;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,7 +25,7 @@ public class Problem41 implements Problem<Integer> {
     public Integer getCalculatedSolution() {
         return IntStream.range(1, MAX)
                 .parallel()
-                .filter(i -> isPandigital(i) && Common.isPrime(i))
+                .filter(i -> isPandigital(i) && PrimeCache.INSTANCE.isPrime(i))
                 .max().getAsInt();
     }
     

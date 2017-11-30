@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class Problem48 implements Problem<String> {
     
     private static final IntStream RANGE = IntStream.range(1, 1000);
-    private static final int LAST_DIGITS = 10;
+    private static final int LAST_DIGITS_COUNT = 10;
     
     @Override
     public String getCalculatedSolution() {
@@ -17,7 +17,7 @@ public class Problem48 implements Problem<String> {
                 .get()
                 .toString();
         
-        return sum.substring(sum.length() - LAST_DIGITS);
+        return sum.substring(sum.length() - LAST_DIGITS_COUNT);
     }
     
     @Override

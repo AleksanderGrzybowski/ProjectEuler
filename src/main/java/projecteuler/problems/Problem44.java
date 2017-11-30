@@ -1,5 +1,7 @@
 package projecteuler.problems;
 
+import lombok.Data;
+
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.Set;
@@ -16,7 +18,7 @@ public class Problem44 implements Problem<Long> {
     @Override
     public Long getCalculatedSolution() {
         Set<Long> pentagonalNumbers = LongStream.rangeClosed(1, MAX)
-                .map(n -> n * (3 * n - 1) / 2)
+                .map(Problem44::pentagonalNumber)
                 .boxed()
                 .collect(toSet());
         
@@ -31,6 +33,10 @@ public class Problem44 implements Problem<Long> {
                 .orElseThrow(AssertionError::new);
     }
     
+    private static long pentagonalNumber(long n) {
+        return n * (3 * n - 1) / 2;
+    }
+    
     private static long criteriaForD(Pair pair) {
         return abs(pair.j - pair.k);
     }
@@ -40,12 +46,8 @@ public class Problem44 implements Problem<Long> {
         return 5482660L;
     }
     
+    @Data
     private static class Pair {
         final long j, k;
-        
-        private Pair(long j, long k) {
-            this.j = j;
-            this.k = k;
-        }
     }
 }

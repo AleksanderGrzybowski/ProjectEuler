@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 @SuppressWarnings("ConstantConditions")
 public class Problem45 implements Problem<Long> {
     
-    private static final Function<Long, Long> TRIANGLE = n -> n * (n + 1) / 2;
+    private static final Function<Long, Long> TRIANGULAR = n -> n * (n + 1) / 2;
     private static final Function<Long, Long> PENTAGONAL = n -> n * (3 * n - 1) / 2;
     private static final Function<Long, Long> HEXAGONAL = n -> n * (2 * n - 1);
     private static final int EXPECTED_COMMON_ELEMENTS_SIZE = 3;
@@ -19,7 +19,7 @@ public class Problem45 implements Problem<Long> {
     public Long getCalculatedSolution() {
         return LongStream.iterate(10, max -> max * 10).boxed().flatMap(max -> {
             Set<Long> commonElements = intersection(
-                    generateUpTo(TRIANGLE, max),
+                    generateUpTo(TRIANGULAR, max),
                     generateUpTo(PENTAGONAL, max),
                     generateUpTo(HEXAGONAL, max)
             );
