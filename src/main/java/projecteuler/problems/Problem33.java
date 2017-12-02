@@ -1,6 +1,6 @@
 package projecteuler.problems;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class Problem33 implements Problem<Integer> {
     }
     
     @SuppressWarnings("SimplifiableIfStatement")
-    @Data
+    @AllArgsConstructor
     private static class Fraction {
         private static final Fraction ZERO = new Fraction(0, 1);
         
