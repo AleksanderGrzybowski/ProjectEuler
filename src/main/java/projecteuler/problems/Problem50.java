@@ -3,7 +3,6 @@ package projecteuler.problems;
 import lombok.Data;
 import projecteuler.PrimeCache;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -19,20 +18,27 @@ public class Problem50 implements Problem<Integer> {
                 .filter(PrimeCache.INSTANCE::isPrime)
                 .collect(Collectors.toList());
         
-        return primesBelowMillion.parallelStream().map(prime -> {
-            int maxCount = IntStream.range(0, primesBelowMillion.size()).boxed().map(left -> {
-                int sum = 0, count = 0;
+        int currentResult = 0;
+        int currentLength = 0;
+        
+        outer:
+        for (int left = 0; left < primesBelowMillion.size(); ++left) {
+            for (int right = left; right < primesBelowMillion.size(); ++right) {
                 
-                for (int walking = left; walking < primesBelowMillion.size() && sum < prime && sum <= MAX; ++walking) {
-                    count++;
-                    sum += primesBelowMillion.get(walking);
+                int sum = 0;
+                for (int i = left; i < right; ++i) {
+                    sum += primesBelowMillion.get(i);
+                    if (sum > MAX) continue outer;
                 }
                 
-                return sum == prime ? count : Integer.MIN_VALUE;
-            }).max(Integer::compareTo).get();
-            
-            return new Pair(prime, maxCount);
-        }).max(Comparator.comparing(pair -> pair.seriesLength)).get().prime;
+                if (PrimeCache.INSTANCE.isPrime(sum) && ((right - left) > currentLength)) {
+                    currentResult = sum;
+                    currentLength = right - left;
+                }
+            }
+        }
+        
+        return currentResult;
     }
     
     @Data
